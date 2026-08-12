@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Patient Registration - SafetyCore Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary": "#ffffff",
+                    "critical-alert": "#EF4444",
+                    "surface-bg": "#FFFFFF",
+                    "surface-variant": "#d3e4fe",
+                    "surface-container-high": "#dce9ff",
+                    "surface-tint": "#0053db",
+                    "on-primary": "#ffffff",
+                    "background": "#f8f9ff",
+                    "on-secondary-fixed-variant": "#005048",
+                    "outline-variant": "#c3c6d7",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-primary": "#b4c5ff",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "primary-fixed": "#dbe1ff",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "success-medical": "#10B981",
+                    "surface-dim": "#cbdbf5",
+                    "surface": "#f8f9ff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-error": "#ffffff",
+                    "on-tertiary-container": "#ffede6",
+                    "on-surface": "#0b1c30",
+                    "tertiary-fixed": "#ffdbcd",
+                    "on-secondary-fixed": "#00201c",
+                    "on-tertiary-fixed": "#360f00",
+                    "surface-container-low": "#eff4ff",
+                    "surface-muted": "#F8FAFC",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-primary-fixed": "#00174b",
+                    "on-background": "#0b1c30",
+                    "inverse-surface": "#213145",
+                    "primary": "#004ac6",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#943700",
+                    "secondary": "#006b5f",
+                    "secondary-fixed-dim": "#4fdbc8",
+                    "border-subtle": "#E2E8F0",
+                    "on-secondary-container": "#006f64",
+                    "error": "#ba1a1a",
+                    "outline": "#737686",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-primary-container": "#eeefff",
+                    "secondary-fixed": "#71f8e4",
+                    "surface-bright": "#f8f9ff",
+                    "secondary-container": "#6df5e1",
+                    "on-surface-variant": "#434655",
+                    "tertiary-container": "#bc4800",
+                    "surface-container": "#e5eeff",
+                    "primary-container": "#2563eb",
+                    "on-secondary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "32px",
+                    "margin-mobile": "16px",
+                    "lg": "24px",
+                    "sm": "8px",
+                    "xl": "32px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "md": "16px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "label-caps": ["Inter"],
+                    "display-metrics": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "status-badge": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-metrics": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "status-badge": ["12px", {"lineHeight": "12px", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #F8FAFC; color: #0b1c30; }
+        .form-input { 
+            width: 100%; border: 1px solid #E2E8F0; border-radius: 0.5rem; padding: 0.75rem; 
+            font-size: 14px; font-family: 'Inter', sans-serif;
+            transition: all 0.2s ease-in-out; background-color: #FFFFFF;
+        }
+        .form-input:focus { outline: none; border-color: #2563EB; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2); }
+        .form-label { display: block; margin-bottom: 0.25rem; color: #434655; font-size: 14px; font-weight: 600; }
+        .section-header { border-bottom: 1px solid #E2E8F0; padding-bottom: 0.5rem; margin-bottom: 1.5rem; color: #0b1c30; }
+        .card-shadow { box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05); }
+    </style>
+</head>
+<body class="min-h-screen bg-surface-muted antialiased font-body-md text-on-surface pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="bg-surface-bg dark:bg-on-background shadow-sm dark:shadow-none border-b border-border-subtle dark:border-outline-variant docked full-width top-0 z-50">
+<div class="flex justify-between items-center w-full px-4 md:px-8 max-w-full h-16">
+<div class="flex items-center gap-3">
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim">SafetyCore Management</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors p-2 rounded-full active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-surface-container overflow-hidden">
+<img alt="Clinician profile avatar" class="w-full h-full object-cover" data-alt="A highly detailed close-up portrait of a professional female clinician in her 40s wearing standard medical scrubs, standing in a brightly lit modern hospital corridor. The lighting is soft, even, and slightly cool, emphasizing clinical cleanliness and trust. Her expression is focused yet empathetic. The background is slightly blurred with light blue tones to match a medical setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYyE7ZDzLv10ZBlDjB41JEhBg2dzfzc6zQiP8VQ8K_6TnKlrqh26h1QwD4JL4_vLorApa3dJ-uI1_84qx0ptc_KnnhyGT3Z_zBs1AG0afR3nGM08QNxK3zR920B7dpF98e8TeXe6vaYHLm0rY-FozfouEw4RvkJOM82pRkf3UIxLrY7iiSGpvtI2KqFhj-8OzKOVVtwNXe_f9tn9UKBGTikGTA7PsaC8IqLOgTagzk7BX0A2-oCHEx"/>
+</div>
+</div>
+</div>
+</header>
+<!-- NavigationDrawer (Desktop) -->
+<nav class="bg-surface-bg dark:bg-on-background border-r border-border-subtle dark:border-outline-variant shadow-md dark:shadow-none h-full w-72 rounded-r-xl fixed left-0 top-16 hidden lg:flex flex-col p-6 z-40 h-[calc(100vh-4rem)]">
+<div class="mb-8">
+<div class="flex items-center gap-4 mb-4">
+<img alt="Medical Practitioner Avatar" class="w-12 h-12 rounded-full object-cover" data-alt="A professional medical practitioner avatar showing a confident male doctor in his 50s wearing a white lab coat over light blue scrubs. The setting is a sterile, well-lit medical office with neutral white and gray tones. The lighting is professional and soft, conveying authority and experience. The mood is serious and clinical." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3t_ZXJpz8Q9noJM08owpn35CaTiaq9UoBd67goWGWBfh90EFroY9INtxmnueI_icrW6ZJXsJEpfusX3f9ZtyhKosr_ambqIzBeBanvkddwD9aOsQMQyCd_MJSwGgsjM8MzL01xR9CKQ8A1cZS6BxHqlnklz2s4JyK0bCQVAsik91ebZAlKFwZgapfUb6i7O0009gfHqYrRPGXAHxXc0sN-gBeSKqPnechxBdNz7xzLQ9zjRtIYZqR"/>
+<div>
+<h3 class="text-headline-sm font-headline-sm text-primary dark:text-primary-fixed-dim">Dr. Sarah Chen</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Head of Nephrology</p>
+</div>
+</div>
+<p class="text-label-caps font-label-caps text-outline">Shift: 08:00 - 20:00</p>
+</div>
+<ul class="flex flex-col gap-2">
+<li><a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest hover:pl-6 transition-all duration-300 rounded-lg active:opacity-80" href="#"><span class="material-symbols-outlined">analytics</span>Clinical Overview</a></li>
+<li><a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest hover:pl-6 transition-all duration-300 rounded-lg active:opacity-80" href="#"><span class="material-symbols-outlined">history_edu</span>Treatment Logs</a></li>
+<li><a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest hover:pl-6 transition-all duration-300 rounded-lg active:opacity-80" href="#"><span class="material-symbols-outlined">settings_input_component</span>Equipment Status</a></li>
+<li><a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest hover:pl-6 transition-all duration-300 rounded-lg active:opacity-80" href="#"><span class="material-symbols-outlined">verified_user</span>Safety Protocols</a></li>
+<li><a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest hover:pl-6 transition-all duration-300 rounded-lg active:opacity-80" href="#"><span class="material-symbols-outlined">event_note</span>Staff Schedule</a></li>
+</ul>
+</nav>
+<!-- Main Content -->
+<main class="lg:ml-72 pt-16 px-4 md:px-margin-desktop py-6 max-w-7xl mx-auto">
+<!-- Header & Progress -->
+<div class="mb-8">
+<h1 class="text-headline-lg font-headline-lg text-on-surface mb-6">Patient Registration</h1>
+<div class="flex items-center w-full max-w-2xl">
+<div class="flex-1 flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-success-medical text-white flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-sm">check</span>
+</div>
+<span class="text-label-caps font-label-caps text-on-surface-variant">Basic Info</span>
+</div>
+<div class="flex-1 h-1 bg-primary-container mx-2"></div>
+<div class="flex-1 flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-primary-container text-white flex items-center justify-center mb-2">
+<span class="text-sm font-bold">2</span>
+</div>
+<span class="text-label-caps font-label-caps text-primary">Medical Baseline</span>
+</div>
+</div>
+</div>
+<form class="space-y-6">
+<!-- Patient Identity Section -->
+<div class="bg-surface-bg rounded-xl p-6 card-shadow">
+<h2 class="text-headline-md font-headline-md section-header">Patient Identity</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div>
+<label class="form-label">Full Name</label>
+<input class="form-input" placeholder="e.g. John Doe" type="text"/>
+</div>
+<div>
+<label class="form-label">National ID</label>
+<input class="form-input" placeholder="e.g. 123456789" type="text"/>
+</div>
+<div>
+<label class="form-label">Date of Birth</label>
+<input class="form-input" type="date"/>
+</div>
+<div>
+<label class="form-label">Gender</label>
+<select class="form-input">
+<option value="">Select Gender</option>
+<option value="male">Male</option>
+<option value="female">Female</option>
+<option value="other">Other</option>
+</select>
+</div>
+<div>
+<label class="form-label">Phone Number</label>
+<input class="form-input" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+<div>
+<label class="form-label">Emergency Contact</label>
+<input class="form-input" placeholder="Name &amp; Phone" type="text"/>
+</div>
+</div>
+</div>
+<!-- Clinical Info Section -->
+<div class="bg-surface-bg rounded-xl p-6 card-shadow relative">
+<div class="absolute top-6 right-6 flex items-center gap-2 bg-surface-container-high px-3 py-1.5 rounded-full border border-border-subtle">
+<span class="material-symbols-outlined text-outline text-sm">science</span>
+<span class="text-status-badge font-status-badge text-on-surface-variant">Pending Labs</span>
+</div>
+<h2 class="text-headline-md font-headline-md section-header pr-32">Clinical Information</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="md:col-span-2">
+<label class="form-label">Primary Diagnosis</label>
+<input class="form-input" placeholder="e.g. End Stage Renal Disease" type="text"/>
+</div>
+<div>
+<label class="form-label">Dry Weight (kg)</label>
+<input class="form-input" placeholder="0.0" step="0.1" type="number"/>
+</div>
+<div>
+<label class="form-label">Known Allergies</label>
+<input class="form-input" placeholder="e.g. Penicillin" type="text"/>
+</div>
+<div class="md:col-span-2">
+<label class="form-label">Current Medications</label>
+<textarea class="form-input" placeholder="List medications..." rows="3"></textarea>
+</div>
+</div>
+</div>
+<!-- Dialysis Details Section -->
+<div class="bg-surface-bg rounded-xl p-6 card-shadow">
+<h2 class="text-headline-md font-headline-md section-header">Dialysis Details</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div>
+<label class="form-label">Vascular Access Type</label>
+<select class="form-input">
+<option value="">Select Access Type</option>
+<option value="fistula">Fistula</option>
+<option value="graft">Graft</option>
+<option value="catheter">Catheter</option>
+</select>
+</div>
+<div>
+<label class="form-label">Dialysis Type</label>
+<select class="form-input">
+<option value="">Select Dialysis Type</option>
+<option value="hemodialysis">Hemodialysis</option>
+<option value="peritoneal">Peritoneal</option>
+</select>
+</div>
+<div class="md:col-span-2">
+<label class="form-label">Session Frequency</label>
+<input class="form-input" placeholder="e.g. 3 times per week" type="text"/>
+</div>
+</div>
+</div>
+<!-- Virus Screening Section -->
+<div class="bg-surface-bg rounded-xl p-6 card-shadow">
+<h2 class="text-headline-md font-headline-md section-header">Virus Screening</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div>
+<label class="form-label">Hepatitis B</label>
+<select class="form-input">
+<option value="pending">Pending</option>
+<option value="negative">Negative</option>
+<option value="positive">Positive</option>
+</select>
+</div>
+<div>
+<label class="form-label">Hepatitis C</label>
+<select class="form-input">
+<option value="pending">Pending</option>
+<option value="negative">Negative</option>
+<option value="positive">Positive</option>
+</select>
+</div>
+<div>
+<label class="form-label">HIV</label>
+<select class="form-input">
+<option value="pending">Pending</option>
+<option value="negative">Negative</option>
+<option value="positive">Positive</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex justify-end pt-4">
+<button class="bg-primary-container text-on-primary font-bold py-3 px-8 rounded-lg shadow-sm hover:opacity-90 active:scale-95 transition-all text-body-lg" type="button">
+                    Register Patient
+                </button>
+</div>
+</form>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="bg-surface-bg dark:bg-on-background border-t border-border-subtle dark:border-outline-variant fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe md:hidden" style="box-shadow: 0px -4px 12px rgba(0, 0, 0, 0.05);">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1">dashboard</span>
+<span class="text-label-caps font-label-caps">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-on-primary-fixed-variant text-on-primary-container dark:text-primary-fixed rounded-xl px-3 py-1 hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1">groups</span>
+<span class="text-label-caps font-label-caps">Patients</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1">chat</span>
+<span class="text-label-caps font-label-caps">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1">emergency_home</span>
+<span class="text-label-caps font-label-caps">Alerts</span>
+</a>
+</nav>
+</body></html>

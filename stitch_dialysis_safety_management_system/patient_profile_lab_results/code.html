@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DiaClinic - Patient Profile - Lab Results</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#737686",
+                        "surface-variant": "#d3e4fe",
+                        "surface-dim": "#cbdbf5",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-bg": "#FFFFFF",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-primary-fixed": "#00174b",
+                        "secondary": "#006b5f",
+                        "background": "#f8f9ff",
+                        "outline-variant": "#c3c6d7",
+                        "surface-tint": "#0053db",
+                        "surface-bright": "#f8f9ff",
+                        "inverse-primary": "#b4c5ff",
+                        "on-secondary-fixed-variant": "#005048",
+                        "surface": "#f8f9ff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-container-low": "#eff4ff",
+                        "on-tertiary-container": "#ffede6",
+                        "surface-container": "#e5eeff",
+                        "critical-alert": "#EF4444",
+                        "inverse-surface": "#213145",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "secondary-fixed-dim": "#4fdbc8",
+                        "primary": "#004ac6",
+                        "success-medical": "#10B981",
+                        "primary-container": "#2563eb",
+                        "error": "#ba1a1a",
+                        "tertiary": "#943700",
+                        "on-background": "#0b1c30",
+                        "on-secondary-container": "#006f64",
+                        "tertiary-container": "#bc4800",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-container-high": "#dce9ff",
+                        "secondary-fixed": "#71f8e4",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "secondary-container": "#6df5e1",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#eeefff",
+                        "border-subtle": "#E2E8F0",
+                        "tertiary-fixed": "#ffdbcd",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#434655",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#0b1c30",
+                        "on-secondary": "#ffffff",
+                        "surface-muted": "#F8FAFC",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#00201c",
+                        "tertiary-fixed-dim": "#ffb596"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "gutter": "16px",
+                        "sm": "8px",
+                        "margin-desktop": "32px",
+                        "md": "16px",
+                        "base": "4px",
+                        "xs": "4px",
+                        "margin-mobile": "16px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "status-badge": ["Inter"],
+                        "display-metrics": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "status-badge": ["12px", { "lineHeight": "12px", "fontWeight": "700" }],
+                        "display-metrics": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9ff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex">
+<!-- Side Navigation (Desktop) -->
+<aside class="hidden md:flex flex-col h-full fixed left-0 top-0 w-[280px] bg-white shadow-md z-40 py-lg px-md shadow-[0px_4px_12px_rgba(0,0,0,0.05)]">
+<div class="mb-lg flex items-center gap-sm px-sm">
+<span class="material-symbols-outlined text-primary text-[32px]">local_hospital</span>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Mercy Dialysis</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Main Unit</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-sm">
+<!-- Patient List is Active due to Patient Profile context -->
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm bg-primary-container text-on-primary-container font-semibold rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span>Patient List</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">description</span>
+<span>Clinical Forms</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span>Messages</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span>Analytics</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-border-subtle pt-md flex flex-col gap-sm">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span>Account</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-error hover:bg-error-container transition-all rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-[280px] w-full min-h-screen">
+<!-- Top App Bar (Mobile & Desktop overrides) -->
+<header class="fixed top-0 w-full z-30 md:w-[calc(100%-280px)] md:left-[280px] h-16 bg-surface shadow-sm border-b border-border-subtle flex justify-between items-center px-margin-desktop md:px-lg">
+<div class="flex items-center gap-sm md:hidden">
+<span class="material-symbols-outlined text-primary cursor-pointer active:opacity-80">menu</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">DiaClinic</span>
+</div>
+<div class="hidden md:flex flex-1 max-w-md items-center bg-surface-container-low rounded-full px-4 py-2 border border-border-subtle focus-within:border-primary focus-within:ring-2 focus-within:ring-primary-fixed transition-all">
+<span class="material-symbols-outlined text-on-surface-variant mr-2">search</span>
+<input class="bg-transparent border-none outline-none w-full font-body-md text-body-md text-on-background focus:ring-0" placeholder="Search patients..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-full p-2 cursor-pointer active:opacity-80">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-full p-2 cursor-pointer active:opacity-80 hidden sm:block">help</span>
+<img alt="Dr. Clinical Administrator Profile" class="w-8 h-8 rounded-full object-cover border-2 border-primary-fixed" data-alt="Professional headshot of a clinical administrator in a modern hospital setting. Well-lit, bright light-mode aesthetic. Cool tones, clinical precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZLCO54ATeWPMv8Hs07dEH-LawIKjxeVXXgyELZo3YsfOcexj8n84iyjKb83iy1EgxnTVYrGCnnldUgzdPJkhWdGj1x8MT7tCSFviSuS8N2GlqqvBxXgAHT-6K2kZ0I3Sb08BD5dIAdKAH8EcOkCiQhNcFpvSCTf9gAQVDja-pHU0w8R5x2XVx1Agj5Gv3Ilna17B2ZDUfgUlu4Ul6zKN-dqqMR3V4qH45OSZlg1uWFbDARQIeV_vL"/>
+</div>
+</header>
+<!-- Page Content -->
+<div class="pt-[80px] px-margin-mobile md:px-margin-desktop pb-xl max-w-7xl mx-auto">
+<!-- Patient Header Context -->
+<div class="mb-lg flex flex-col md:flex-row md:items-center justify-between gap-md bg-white p-lg rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] border border-white">
+<div class="flex items-center gap-lg">
+<img class="w-16 h-16 rounded-full object-cover shadow-sm" data-alt="Portrait of an elderly male patient looking optimistic. Natural lighting, soft clinical background, high-resolution, light-mode palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9Bhv0ek-3dErAPWoI5OhsoZwLjJe2afn5MDh8tkH1KqM6ff9KTeyXjUbHGphL7kUKqTCzXATTpA-2u79PtvMUeNcvElkmbxQ65_-xr-4Lw40m7KLHI9WDs4TBOrVzrndo2JEXrnu92Dzk8scddNdRrhClv5RX9F5bKmtTo6Sq1pY599IyPh8SUZH3cW7UF1_LMaUBIkUdX_52UdMUyuocd0_BdMatewATSEmNH5IxoOajuGpsYpp0"/>
+<div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background">John Doe (MRN: 849201)</h2>
+<div class="flex flex-wrap gap-2 mt-xs text-on-surface-variant font-body-md text-body-md">
+<span>DOB: 04/12/1954 (69 Yrs)</span>
+<span class="hidden sm:inline">•</span>
+<span>Blood Type: O+</span>
+<span class="hidden sm:inline">•</span>
+<span>Dry Weight: 72.5 kg</span>
+</div>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-primary-container text-on-primary rounded-lg font-body-md text-body-md font-semibold hover:bg-primary transition-colors h-12 flex items-center justify-center shadow-sm">
+                        Schedule Lab
+                    </button>
+</div>
+</div>
+<!-- Tabs Navigation -->
+<div class="flex border-b border-border-subtle mb-lg overflow-x-auto no-scrollbar">
+<button class="px-md py-sm font-body-md text-body-md text-on-surface-variant hover:text-primary border-b-2 border-transparent hover:border-primary-fixed whitespace-nowrap">Overview</button>
+<button class="px-md py-sm font-body-md text-body-md text-on-surface-variant hover:text-primary border-b-2 border-transparent hover:border-primary-fixed whitespace-nowrap">Treatment History</button>
+<button class="px-md py-sm font-body-md text-body-md text-primary font-semibold border-b-2 border-primary whitespace-nowrap">Lab Results</button>
+<button class="px-md py-sm font-body-md text-body-md text-on-surface-variant hover:text-primary border-b-2 border-transparent hover:border-primary-fixed whitespace-nowrap">Medications</button>
+<button class="px-md py-sm font-body-md text-body-md text-on-surface-variant hover:text-primary border-b-2 border-transparent hover:border-primary-fixed whitespace-nowrap">Care Plan</button>
+</div>
+<!-- Lab Results Content -->
+<div class="bg-white rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] overflow-hidden">
+<div class="p-lg border-b border-border-subtle flex justify-between items-center bg-surface-muted">
+<h3 class="font-headline-md text-headline-md text-on-background">Recent Lab Panels</h3>
+<div class="flex items-center gap-sm">
+<span class="font-body-md text-body-md text-on-surface-variant">Filter by:</span>
+<select class="border-border-subtle rounded-md font-body-md text-body-md text-on-background focus:ring-primary focus:border-primary bg-white py-1">
+<option>Last 30 Days</option>
+<option>Last 3 Months</option>
+<option>Last 6 Months</option>
+<option>All Time</option>
+</select>
+</div>
+</div>
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-muted border-b border-border-subtle">
+<th class="p-md font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Test Name</th>
+<th class="p-md font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Result</th>
+<th class="p-md font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Reference Range</th>
+<th class="p-md font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="p-md font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Date</th>
+<th class="p-md font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider text-right">Trend</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-background divide-y divide-border-subtle">
+<!-- Potassium (High/Critical) -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-md font-semibold">Potassium (K)</td>
+<td class="p-md font-bold text-error">5.8 mEq/L</td>
+<td class="p-md text-on-surface-variant">3.5 - 5.0 mEq/L</td>
+<td class="p-md">
+<span class="inline-flex items-center gap-xs px-2 py-1 rounded-full bg-error-container text-on-error-container font-status-badge text-status-badge">
+<span class="material-symbols-outlined text-[14px]">warning</span> High
+                                    </span>
+</td>
+<td class="p-md text-on-surface-variant">Oct 24, 2023</td>
+<td class="p-md text-right"><span class="material-symbols-outlined text-error">trending_up</span></td>
+</tr>
+<!-- Sodium (Normal) -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-md font-semibold">Sodium (Na)</td>
+<td class="p-md font-bold text-success-medical">138 mEq/L</td>
+<td class="p-md text-on-surface-variant">135 - 145 mEq/L</td>
+<td class="p-md">
+<span class="inline-flex items-center gap-xs px-2 py-1 rounded-full bg-[#D1FAE5] text-[#065F46] font-status-badge text-status-badge">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Normal
+                                    </span>
+</td>
+<td class="p-md text-on-surface-variant">Oct 24, 2023</td>
+<td class="p-md text-right"><span class="material-symbols-outlined text-success-medical">trending_flat</span></td>
+</tr>
+<!-- Hemoglobin (Low/Warning) -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-md font-semibold">Hemoglobin (Hb)</td>
+<td class="p-md font-bold text-tertiary-container">9.2 g/dL</td>
+<td class="p-md text-on-surface-variant">13.8 - 17.2 g/dL</td>
+<td class="p-md">
+<span class="inline-flex items-center gap-xs px-2 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-status-badge text-status-badge">
+<span class="material-symbols-outlined text-[14px]">arrow_downward</span> Low
+                                    </span>
+</td>
+<td class="p-md text-on-surface-variant">Oct 24, 2023</td>
+<td class="p-md text-right"><span class="material-symbols-outlined text-tertiary-container">trending_down</span></td>
+</tr>
+<!-- Albumin (Normal) -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-md font-semibold">Albumin</td>
+<td class="p-md font-bold text-success-medical">4.1 g/dL</td>
+<td class="p-md text-on-surface-variant">3.4 - 5.4 g/dL</td>
+<td class="p-md">
+<span class="inline-flex items-center gap-xs px-2 py-1 rounded-full bg-[#D1FAE5] text-[#065F46] font-status-badge text-status-badge">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Normal
+                                    </span>
+</td>
+<td class="p-md text-on-surface-variant">Oct 24, 2023</td>
+<td class="p-md text-right"><span class="material-symbols-outlined text-success-medical">trending_up</span></td>
+</tr>
+<!-- Creatinine (High) -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-md font-semibold">Creatinine</td>
+<td class="p-md font-bold text-error">6.4 mg/dL</td>
+<td class="p-md text-on-surface-variant">0.74 - 1.35 mg/dL</td>
+<td class="p-md">
+<span class="inline-flex items-center gap-xs px-2 py-1 rounded-full bg-error-container text-on-error-container font-status-badge text-status-badge">
+<span class="material-symbols-outlined text-[14px]">warning</span> High
+                                    </span>
+</td>
+<td class="p-md text-on-surface-variant">Oct 24, 2023</td>
+<td class="p-md text-right"><span class="material-symbols-outlined text-error">trending_flat</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-md border-t border-border-subtle bg-surface-muted text-center">
+<button class="text-primary font-body-md text-body-md font-semibold hover:underline">View Historical Data</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

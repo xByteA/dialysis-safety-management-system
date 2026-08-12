@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Patient Risk Summary - Mercy Dialysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#005048",
+                        "primary": "#004ac6",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#0b1c30",
+                        "on-tertiary-container": "#ffede6",
+                        "outline-variant": "#c3c6d7",
+                        "surface-dim": "#cbdbf5",
+                        "outline": "#737686",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "secondary": "#006b5f",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-variant": "#d3e4fe",
+                        "inverse-primary": "#b4c5ff",
+                        "critical-alert": "#EF4444",
+                        "secondary-container": "#6df5e1",
+                        "inverse-surface": "#213145",
+                        "secondary-fixed-dim": "#4fdbc8",
+                        "background": "#f8f9ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#0053db",
+                        "border-subtle": "#E2E8F0",
+                        "surface-bg": "#FFFFFF",
+                        "primary-container": "#2563eb",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-container-low": "#eff4ff",
+                        "tertiary-container": "#bc4800",
+                        "surface-bright": "#f8f9ff",
+                        "on-background": "#0b1c30",
+                        "surface": "#f8f9ff",
+                        "surface-muted": "#F8FAFC",
+                        "surface-container": "#e5eeff",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "on-primary-fixed": "#00174b",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-tertiary-fixed": "#360f00",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary-container": "#006f64",
+                        "on-secondary-fixed": "#00201c",
+                        "success-medical": "#10B981",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary": "#943700",
+                        "on-surface-variant": "#434655",
+                        "secondary-fixed": "#71f8e4",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#eeefff",
+                        "tertiary-fixed": "#ffdbcd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "status-badge": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-metrics": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "status-badge": ["12px", { "lineHeight": "12px", "fontWeight": "700" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display-metrics": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface-muted text-on-surface font-body-md min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col py-lg gap-sm bg-surface-container-lowest dark:bg-inverse-surface fixed left-0 top-0 h-full w-[280px] border-r border-border-subtle dark:border-outline-variant z-40">
+<div class="px-md pb-md mb-md border-b border-border-subtle">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Mercy Dialysis</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Clinical Portal</p>
+</div>
+<a class="flex items-center gap-md px-md py-sm mx-md rounded-lg text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-variant transition-all cursor-pointer active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm mx-md rounded-lg text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-variant transition-all cursor-pointer active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="monitor_heart">monitor_heart</span>
+<span class="font-label-caps text-label-caps">Vitals Entry</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm mx-md rounded-lg text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-variant transition-all cursor-pointer active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="medical_services">medical_services</span>
+<span class="font-label-caps text-label-caps">Medication Log</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm mx-md rounded-lg text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-variant transition-all cursor-pointer active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="report_problem">report_problem</span>
+<span class="font-label-caps text-label-caps">Incident Report</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm mx-md rounded-lg text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-variant transition-all cursor-pointer active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-caps text-label-caps">Supply Log</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm mx-md rounded-lg bg-primary-container text-on-primary-container font-semibold transition-all cursor-pointer active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="warning" data-weight="fill" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span class="font-label-caps text-label-caps">Patient Risk Summary</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm mx-md rounded-lg text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-variant transition-all cursor-pointer active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+<span class="font-label-caps text-label-caps">Messages</span>
+</a>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-[280px] flex flex-col min-h-screen">
+<!-- TopAppBar (Mobile Only) -->
+<header class="md:hidden flex justify-between items-center w-full px-xl h-16 z-50 bg-surface-container-lowest dark:bg-inverse-surface border-b border-border-subtle dark:border-outline-variant shadow-sm sticky top-0">
+<div class="flex items-center gap-md">
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed">Mercy Dialysis</span>
+</div>
+<div class="flex items-center gap-md text-primary dark:text-inverse-primary cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<img class="w-8 h-8 rounded-full object-cover" data-alt="A small, circular avatar portrait of a professional nurse wearing blue medical scrubs, set against a clean, light clinical background. High quality, corporate medical photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxkS3UYmK_nQuUs2t_NzwZlZKLnaUGtdV39N-PkVI8OEu0h1DhVksiPKhJTOCyydOuWHO_ztoA6XTNz0YXd6uBTBmYYcFawChUqJNMc5eo137KuEhQedwlHpUCM11u471lP4fGT5kk_KRe-FMx1aNdwgCpJ6rC9sbbSJ_RDWw7jrXeuHbQ7SH4CL7roAILWoqQG-3nduPWXUbCg7udOOiNWZ-DzdaNk_1IOOcQnMcvTlm3O9lR9ziI"/>
+</div>
+</header>
+<!-- Canvas -->
+<div class="p-margin-mobile md:p-margin-desktop flex-1 max-w-6xl mx-auto w-full">
+<!-- Patient Header & Actions -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-lg gap-md">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Patient Risk Summary</h2>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-sm">
+<span class="material-symbols-outlined text-outline">person</span>
+                        Robert Chang
+                    </p>
+</div>
+<div class="flex flex-wrap gap-sm w-full md:w-auto">
+<button class="flex-1 md:flex-none bg-primary-container text-on-primary-container font-label-caps text-label-caps px-md py-sm rounded-lg flex items-center justify-center gap-xs hover:opacity-90 transition-opacity h-12">
+<span class="material-symbols-outlined text-[18px]">monitor_heart</span>
+                        Enter Vitals
+                    </button>
+<button class="flex-1 md:flex-none border border-outline-variant text-on-surface font-label-caps text-label-caps px-md py-sm rounded-lg flex items-center justify-center gap-xs hover:bg-surface-container-low transition-colors h-12">
+<span class="material-symbols-outlined text-[18px]">medical_services</span>
+                        Log Medication
+                    </button>
+<button class="flex-1 md:flex-none bg-error text-on-error font-label-caps text-label-caps px-md py-sm rounded-lg flex items-center justify-center gap-xs hover:opacity-90 transition-opacity h-12">
+<span class="material-symbols-outlined text-[18px]">report_problem</span>
+                        Report Incident
+                    </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Doctor-flagged risks (Warning Box) -->
+<div class="md:col-span-12 bg-error-container border border-error/20 rounded-xl p-lg flex items-start gap-md shadow-[0px_4px_12px_rgba(0,0,0,0.05)]">
+<span class="material-symbols-outlined text-error text-[32px] mt-xs" data-weight="fill" style="font-variation-settings: 'FILL' 1;">warning</span>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-error-container mb-xs">Doctor-Flagged Risk: Hypotension</h3>
+<p class="font-body-md text-body-md text-on-error-container/80">Patient has a documented history of intradialytic hypotension. Monitor blood pressure closely during fluid removal phases. Adjust ultrafiltration rate if systolic drops below 100 mmHg.</p>
+</div>
+</div>
+<!-- Current Prescription Snapshot -->
+<div class="md:col-span-8 bg-surface-bg rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col">
+<div class="border-b border-border-subtle p-md bg-surface-container-lowest">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">prescriptions</span>
+                            Current Prescription Snapshot
+                        </h3>
+</div>
+<div class="p-md flex-1">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-border-subtle">
+<th class="font-label-caps text-label-caps text-on-surface-variant py-sm font-semibold">Medication</th>
+<th class="font-label-caps text-label-caps text-on-surface-variant py-sm font-semibold">Dosage</th>
+<th class="font-label-caps text-label-caps text-on-surface-variant py-sm font-semibold">Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-border-subtle">
+<td class="font-body-md text-body-md text-on-surface py-md">Epoetin Alfa</td>
+<td class="font-body-md text-body-md text-on-surface py-md">4000 Units</td>
+<td class="font-body-md text-body-md text-on-surface-variant py-md">3x/week (IV)</td>
+</tr>
+<tr class="border-b border-border-subtle">
+<td class="font-body-md text-body-md text-on-surface py-md">Sevelamer</td>
+<td class="font-body-md text-body-md text-on-surface py-md">800 mg</td>
+<td class="font-body-md text-body-md text-on-surface-variant py-md">With meals</td>
+</tr>
+<tr>
+<td class="font-body-md text-body-md text-on-surface py-md">Lisinopril</td>
+<td class="font-body-md text-body-md text-on-surface py-md">10 mg</td>
+<td class="font-body-md text-body-md text-on-surface-variant py-md">Daily (Hold pre-dialysis)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Known Allergies -->
+<div class="md:col-span-4 bg-surface-bg rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col">
+<div class="border-b border-border-subtle p-md bg-surface-container-lowest">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">allergy</span>
+                            Known Allergies
+                        </h3>
+</div>
+<div class="p-md flex-1 flex flex-col gap-sm">
+<div class="flex items-center gap-md p-sm rounded-lg bg-surface-container-low border border-border-subtle">
+<span class="material-symbols-outlined text-critical-alert">block</span>
+<div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">Heparin (Porcine)</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Severe Rash / Itching</p>
+</div>
+</div>
+<div class="flex items-center gap-md p-sm rounded-lg bg-surface-container-low border border-border-subtle">
+<span class="material-symbols-outlined text-outline">block</span>
+<div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">Latex</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Mild Contact Dermatitis</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

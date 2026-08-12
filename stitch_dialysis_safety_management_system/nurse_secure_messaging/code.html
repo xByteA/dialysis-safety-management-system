@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mercy Dialysis - Secure Messaging</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#005048",
+                        "primary": "#004ac6",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#0b1c30",
+                        "on-tertiary-container": "#ffede6",
+                        "outline-variant": "#c3c6d7",
+                        "surface-dim": "#cbdbf5",
+                        "outline": "#737686",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "secondary": "#006b5f",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-variant": "#d3e4fe",
+                        "inverse-primary": "#b4c5ff",
+                        "critical-alert": "#EF4444",
+                        "secondary-container": "#6df5e1",
+                        "inverse-surface": "#213145",
+                        "secondary-fixed-dim": "#4fdbc8",
+                        "background": "#f8f9ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#0053db",
+                        "border-subtle": "#E2E8F0",
+                        "surface-bg": "#FFFFFF",
+                        "primary-container": "#2563eb",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-container-low": "#eff4ff",
+                        "tertiary-container": "#bc4800",
+                        "surface-bright": "#f8f9ff",
+                        "on-background": "#0b1c30",
+                        "surface": "#f8f9ff",
+                        "surface-muted": "#F8FAFC",
+                        "surface-container": "#e5eeff",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "on-primary-fixed": "#00174b",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-tertiary-fixed": "#360f00",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary-container": "#006f64",
+                        "on-secondary-fixed": "#00201c",
+                        "success-medical": "#10B981",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary": "#943700",
+                        "on-surface-variant": "#434655",
+                        "secondary-fixed": "#71f8e4",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#eeefff",
+                        "tertiary-fixed": "#ffdbcd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "status-badge": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-metrics": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "status-badge": ["12px", { "lineHeight": "12px", "fontWeight": "700" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display-metrics": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface-muted h-full flex overflow-hidden font-body-md text-on-surface">
+<!-- SideNavBar -->
+<nav class="bg-surface-container-lowest dark:bg-inverse-surface text-primary dark:text-inverse-primary fixed left-0 top-0 h-full w-[280px] border-r border-border-subtle dark:border-outline-variant flat no shadows flex flex-col py-lg gap-sm z-40 hidden md:flex">
+<div class="px-lg mb-lg">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Mercy Dialysis</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Clinical Portal</p>
+</div>
+<div class="flex-1 flex flex-col gap-base">
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container-low rounded-lg mx-md hover:bg-surface-container-low dark:hover:bg-surface-variant transition-all cursor-pointer active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container-low rounded-lg mx-md hover:bg-surface-container-low dark:hover:bg-surface-variant transition-all cursor-pointer active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">monitor_heart</span>
+<span class="font-label-caps text-label-caps">Vitals Entry</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container-low rounded-lg mx-md hover:bg-surface-container-low dark:hover:bg-surface-variant transition-all cursor-pointer active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">medical_services</span>
+<span class="font-label-caps text-label-caps">Medication Log</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container-low rounded-lg mx-md hover:bg-surface-container-low dark:hover:bg-surface-variant transition-all cursor-pointer active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">report_problem</span>
+<span class="font-label-caps text-label-caps">Incident Report</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container-low rounded-lg mx-md hover:bg-surface-container-low dark:hover:bg-surface-variant transition-all cursor-pointer active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">inventory_2</span>
+<span class="font-label-caps text-label-caps">Supply Log</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container-low rounded-lg mx-md hover:bg-surface-container-low dark:hover:bg-surface-variant transition-all cursor-pointer active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">warning</span>
+<span class="font-label-caps text-label-caps">Patient Risk Summary</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm bg-primary-container text-on-primary-container font-semibold rounded-lg mx-md hover:bg-surface-container-low dark:hover:bg-surface-variant transition-all cursor-pointer active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">mail</span>
+<span class="font-label-caps text-label-caps">Messages</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col md:ml-[280px] h-full overflow-hidden">
+<!-- TopAppBar -->
+<header class="bg-surface-container-lowest dark:bg-inverse-surface text-primary dark:text-inverse-primary docked full-width top-0 border-b border-border-subtle dark:border-outline-variant shadow-sm flex justify-between items-center w-full px-xl h-16 z-50">
+<div class="flex items-center gap-md">
+<div class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed md:hidden">Mercy Dialysis</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80 p-sm rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<img alt="Nurse Profile Avatar" class="w-8 h-8 rounded-full object-cover" data-alt="A small circular avatar image of a female nurse wearing scrubs in a well-lit modern clinical environment, professional and approachable expression, high resolution photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCman-2zOidt0abvfIZErGz5L7m5aBAgYVI02lvSTGW6XOlm8XlM-q6Zg63Lnd6qS9OhPN5HKHoc-bMKXtMLlB5FVZFHT1wng4TYwvg5jA60yFkYIaegLS8M_wAVatUBkzuEvh2cecfSJu2R0u0cdv6TLdJDpZHQ_6h_iU5MF199n9TfnI5UNV6JGGTmNMOdFO7PaxcnD5-rJPpalgtjhLjcreCZWqSbdeh80Uav30Wuy1yFgwOaWt8"/>
+</div>
+</header>
+<div class="flex-1 flex overflow-hidden">
+<!-- Conversation List Sidebar (Internal to content) -->
+<aside class="w-full md:w-80 border-r border-border-subtle bg-surface-bg flex flex-col h-full flex-shrink-0 z-10 md:static absolute inset-0 md:translate-x-0 -translate-x-full transition-transform" id="conversation-list">
+<div class="p-md border-b border-border-subtle">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-muted border border-border-subtle rounded-lg focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-body-md font-body-md placeholder:text-outline" placeholder="Search messages..." type="text"/>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto">
+<!-- Group: Dr. Sarah Chen -->
+<div class="pt-sm">
+<div class="px-md py-sm font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider bg-surface-muted sticky top-0">
+                            Dr. Sarah Chen
+                        </div>
+<ul class="flex flex-col">
+<!-- Active Conversation -->
+<li>
+<button class="w-full text-left px-md py-3 bg-surface-container-low border-l-4 border-primary hover:bg-surface-container-low transition-colors flex gap-3 items-start group">
+<div class="relative flex-shrink-0">
+<div class="w-10 h-10 rounded-full bg-surface-dim flex items-center justify-center text-primary font-bold text-lg">
+                                            SC
+                                        </div>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-success-medical rounded-full border-2 border-surface-bg"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="font-body-md text-body-md font-semibold text-on-surface truncate">Robert Chang</h3>
+<span class="font-label-caps text-label-caps text-primary">10:42 AM</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">Please adjust heparin protocol as discussed.</p>
+</div>
+<div class="flex-shrink-0 mt-1">
+<div class="w-2 h-2 bg-primary rounded-full"></div>
+</div>
+</button>
+</li>
+<!-- Inactive Conversation -->
+<li>
+<button class="w-full text-left px-md py-3 border-l-4 border-transparent hover:bg-surface-muted transition-colors flex gap-3 items-start group">
+<div class="relative flex-shrink-0">
+<div class="w-10 h-10 rounded-full bg-surface-dim flex items-center justify-center text-outline font-bold text-lg">
+                                            SC
+                                        </div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="font-body-md text-body-md font-semibold text-on-surface truncate">Maria Garcia</h3>
+<span class="font-label-caps text-label-caps text-outline">Yesterday</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">Lab results received.</p>
+</div>
+</button>
+</li>
+</ul>
+</div>
+<!-- Group: Dr. James Wilson -->
+<div class="pt-sm">
+<div class="px-md py-sm font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider bg-surface-muted sticky top-0">
+                            Dr. James Wilson
+                        </div>
+<ul class="flex flex-col">
+<li>
+<button class="w-full text-left px-md py-3 border-l-4 border-transparent hover:bg-surface-muted transition-colors flex gap-3 items-start group">
+<div class="relative flex-shrink-0">
+<div class="w-10 h-10 rounded-full bg-surface-dim flex items-center justify-center text-outline font-bold text-lg">
+                                            JW
+                                        </div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="font-body-md text-body-md font-semibold text-on-surface truncate">General Inquiries</h3>
+<span class="font-label-caps text-label-caps text-outline">Oct 24</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">Will be rounding at 2 PM.</p>
+</div>
+</button>
+</li>
+</ul>
+</div>
+</div>
+<!-- New Message Button -->
+<div class="p-md mt-auto border-t border-border-subtle bg-surface-bg">
+<button class="w-full bg-primary-container text-on-primary-container font-body-md text-body-md font-semibold py-3 px-4 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">edit_square</span>
+                        New Message
+                    </button>
+</div>
+</aside>
+<!-- Active Chat Area -->
+<section class="flex-1 flex flex-col bg-surface-bg h-full relative">
+<!-- Chat Header -->
+<header class="flex items-center justify-between px-md py-3 border-b border-border-subtle bg-surface-bg shadow-sm z-10">
+<div class="flex items-center gap-3">
+<button class="md:hidden text-on-surface-variant p-2 -ml-2 rounded-full hover:bg-surface-muted transition-colors" onclick="document.getElementById('conversation-list').classList.toggle('-translate-x-full')">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-primary-fixed-dim text-on-primary-fixed flex items-center justify-center font-bold text-lg">
+                            SC
+                        </div>
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface leading-tight">Dr. Sarah Chen</h2>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-success-medical"></span>
+<span class="font-body-md text-body-md text-on-surface-variant text-sm">Online</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container px-3 py-1.5 rounded-lg flex items-center gap-2 border border-border-subtle shadow-[0px_4px_12px_rgba(0,0,0,0.05)]">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">person</span>
+<span class="font-body-md text-body-md font-semibold text-on-surface text-sm">Regarding: <span class="text-primary">Robert Chang</span></span>
+</div>
+</header>
+<!-- Message Timeline -->
+<div class="flex-1 overflow-y-auto p-md space-y-lg bg-surface-muted">
+<!-- Date Separator -->
+<div class="flex justify-center">
+<span class="bg-surface-bg border border-border-subtle px-3 py-1 rounded-full font-label-caps text-label-caps text-on-surface-variant text-[10px] shadow-sm">Today</span>
+</div>
+<!-- Incoming Message -->
+<div class="flex items-start gap-3 max-w-[85%]">
+<div class="w-8 h-8 rounded-full bg-primary-fixed-dim text-on-primary-fixed flex items-center justify-center font-bold text-sm flex-shrink-0 mt-1">
+                            SC
+                        </div>
+<div class="flex flex-col gap-1">
+<div class="bg-surface-bg border border-border-subtle rounded-2xl rounded-tl-sm p-3 shadow-[0px_4px_12px_rgba(0,0,0,0.05)] text-on-surface font-body-md text-body-md">
+                                Hi, I reviewed Robert Chang's latest vitals. BP is trending low during the last 30 mins of treatment.
+                            </div>
+<span class="font-label-caps text-label-caps text-outline ml-1">10:35 AM</span>
+</div>
+</div>
+<!-- Outgoing Message -->
+<div class="flex items-start gap-3 max-w-[85%] ml-auto flex-row-reverse">
+<div class="w-8 h-8 rounded-full bg-surface-dim text-outline flex items-center justify-center font-bold text-sm flex-shrink-0 mt-1">
+                            ME
+                        </div>
+<div class="flex flex-col gap-1 items-end">
+<div class="bg-primary-container text-on-primary-container rounded-2xl rounded-tr-sm p-3 shadow-[0px_4px_12px_rgba(0,0,0,0.05)] font-body-md text-body-md">
+                                Yes, we noticed that as well. Currently at 105/65. Should we adjust the UF goal?
+                            </div>
+<span class="font-label-caps text-label-caps text-outline mr-1">10:38 AM</span>
+</div>
+</div>
+<!-- Incoming Message (Urgent) -->
+<div class="flex items-start gap-3 max-w-[85%]">
+<div class="w-8 h-8 rounded-full bg-primary-fixed-dim text-on-primary-fixed flex items-center justify-center font-bold text-sm flex-shrink-0 mt-1">
+                            SC
+                        </div>
+<div class="flex flex-col gap-1">
+<div class="bg-error-container border border-critical-alert rounded-2xl rounded-tl-sm p-3 shadow-[0px_4px_12px_rgba(0,0,0,0.05)] text-on-error-container font-body-md text-body-md relative">
+<div class="absolute -top-2.5 -left-2 bg-critical-alert text-on-error px-2 py-0.5 rounded-full font-status-badge text-status-badge flex items-center gap-1 shadow-sm border border-surface-bg">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">warning</span> Urgent
+                                </div>
+                                Please adjust heparin protocol as discussed. Decrease UF rate to minimal and reassess in 15 mins.
+                            </div>
+<span class="font-label-caps text-label-caps text-outline ml-1">10:42 AM</span>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="p-md bg-surface-bg border-t border-border-subtle">
+<!-- Formatting/Actions Toolbar -->
+<div class="flex items-center gap-2 mb-2 px-1">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1 rounded hover:bg-surface-muted tooltip-trigger relative">
+<span class="material-symbols-outlined text-sm">attach_file</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1 rounded hover:bg-surface-muted">
+<span class="material-symbols-outlined text-sm">image</span>
+</button>
+<div class="w-px h-4 bg-border-subtle mx-1"></div>
+<label class="flex items-center gap-2 cursor-pointer bg-surface-muted hover:bg-error-container hover:text-on-error-container text-on-surface-variant px-2 py-1 rounded-md transition-colors border border-transparent hover:border-critical-alert/30">
+<input class="form-checkbox h-4 w-4 text-critical-alert rounded border-border-subtle focus:ring-critical-alert focus:ring-offset-0 bg-surface-bg" type="checkbox"/>
+<span class="font-label-caps text-label-caps flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">flag</span> Flag Urgent</span>
+</label>
+</div>
+<div class="flex items-end gap-2">
+<div class="flex-1 relative">
+<textarea class="w-full bg-surface-muted border border-border-subtle rounded-xl py-3 pl-4 pr-10 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-body-md font-body-md placeholder:text-outline resize-none min-h-[48px] max-h-[120px] shadow-sm" placeholder="Type a message regarding Robert Chang..." rows="1"></textarea>
+<button class="absolute right-2 bottom-2 text-on-surface-variant hover:text-primary p-1 rounded-full transition-colors">
+<span class="material-symbols-outlined">sentiment_satisfied</span>
+</button>
+</div>
+<button class="bg-primary-container text-on-primary-container p-3 rounded-xl hover:opacity-90 transition-opacity active:scale-95 shadow-sm flex-shrink-0 h-[48px] w-[48px] flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+<div class="text-right mt-1 px-1">
+<span class="font-label-caps text-label-caps text-outline text-[10px]">Press Enter to send, Shift+Enter for new line</span>
+</div>
+</div>
+</section>
+</div>
+</main>
+<script>
+        // Auto-resize textarea
+        const textarea = document.querySelector('textarea');
+        textarea.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+        });
+    </script>
+</body></html>

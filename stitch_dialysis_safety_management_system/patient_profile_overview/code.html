@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Patient Profile - Robert Chang | DiaClinic Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#737686",
+                      "surface-variant": "#d3e4fe",
+                      "surface-dim": "#cbdbf5",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "surface-bg": "#FFFFFF",
+                      "on-tertiary-fixed": "#360f00",
+                      "on-primary-fixed": "#00174b",
+                      "secondary": "#006b5f",
+                      "background": "#f8f9ff",
+                      "outline-variant": "#c3c6d7",
+                      "surface-tint": "#0053db",
+                      "surface-bright": "#f8f9ff",
+                      "inverse-primary": "#b4c5ff",
+                      "on-secondary-fixed-variant": "#005048",
+                      "surface": "#f8f9ff",
+                      "inverse-on-surface": "#eaf1ff",
+                      "surface-container-low": "#eff4ff",
+                      "on-tertiary-container": "#ffede6",
+                      "surface-container": "#e5eeff",
+                      "critical-alert": "#EF4444",
+                      "inverse-surface": "#213145",
+                      "on-error-container": "#93000a",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "secondary-fixed-dim": "#4fdbc8",
+                      "primary": "#004ac6",
+                      "success-medical": "#10B981",
+                      "primary-container": "#2563eb",
+                      "error": "#ba1a1a",
+                      "tertiary": "#943700",
+                      "on-background": "#0b1c30",
+                      "on-secondary-container": "#006f64",
+                      "tertiary-container": "#bc4800",
+                      "primary-fixed": "#dbe1ff",
+                      "surface-container-high": "#dce9ff",
+                      "secondary-fixed": "#71f8e4",
+                      "on-tertiary-fixed-variant": "#7d2d00",
+                      "secondary-container": "#6df5e1",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-container": "#eeefff",
+                      "border-subtle": "#E2E8F0",
+                      "tertiary-fixed": "#ffdbcd",
+                      "surface-container-lowest": "#ffffff",
+                      "on-surface-variant": "#434655",
+                      "error-container": "#ffdad6",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-primary": "#ffffff",
+                      "on-surface": "#0b1c30",
+                      "on-secondary": "#ffffff",
+                      "surface-muted": "#F8FAFC",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed": "#00201c",
+                      "tertiary-fixed-dim": "#ffb596"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "32px",
+                      "gutter": "16px",
+                      "sm": "8px",
+                      "margin-desktop": "32px",
+                      "md": "16px",
+                      "base": "4px",
+                      "xs": "4px",
+                      "margin-mobile": "16px",
+                      "lg": "24px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "status-badge": [
+                              "Inter"
+                      ],
+                      "display-metrics": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "status-badge": [
+                              "12px",
+                              {
+                                      "lineHeight": "12px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-metrics": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface-muted min-h-screen text-on-surface">
+<!-- Navigation Suppressed as per Task Focused/Sub-page relevance rule -->
+<!-- Top AppBar (Task Focus Header) -->
+<header class="bg-surface dark:bg-on-background fixed top-0 w-full z-50 border-b border-border-subtle dark:border-outline-variant shadow-sm flex justify-between items-center px-margin-desktop h-16 w-full">
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80 p-sm rounded-full">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">DiaClinic Management</div>
+</div>
+<div class="flex items-center gap-sm">
+<!-- Placeholder trailing icons if needed for task view -->
+<button class="text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80 p-sm rounded-full">
+<span class="material-symbols-outlined">print</span>
+</button>
+</div>
+</header>
+<main class="pt-24 px-margin-desktop pb-xl max-w-7xl mx-auto">
+<!-- Patient Header Card -->
+<section class="bg-surface-bg rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] p-lg mb-lg">
+<div class="flex flex-col md:flex-row gap-xl items-start md:items-center">
+<div class="w-24 h-24 rounded-full overflow-hidden shrink-0 border-4 border-surface-container-low">
+<img alt="Robert Chang" class="w-full h-full object-cover" data-alt="A clinical portrait photograph of an elderly Asian man with silver hair, looking calm and composed in a softly lit, modern medical setting. The lighting is clean and bright, emphasizing a sterile yet empathetic healthcare environment with a muted color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbcNqWT_KSexy6v44iBvOdPW0gZIJSOGcRrBLbNt63C8HAPIF-OKd3s2gJTV8Xtv79MRjZgECyvZn5JOBhU-GRrfiPnZLjrjs4JukDWGPLgilgYwaVplS-FlsPl7CiSpbVw9Ccn2rnhNQ4-B_1ytSxnFGAH4hJa6_p79gdclpC7XoWiYrPO2vtaRhYtxl8Z6Spu2C6j-_hLQGj_yAH3PuLQHZ4ALPggHCdDh4wemEvxTrHWxZ-UugB"/>
+</div>
+<div class="flex-grow">
+<div class="flex flex-wrap items-center gap-md mb-sm">
+<h1 class="font-headline-lg text-headline-lg text-on-background">Robert Chang</h1>
+<div class="px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-status-badge text-status-badge uppercase tracking-wider border border-tertiary-fixed-dim">
+                            Medium Risk
+                        </div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-md">
+<div>
+<p class="font-label-caps text-label-caps text-outline uppercase">Age</p>
+<p class="font-body-lg text-body-lg text-on-surface font-semibold">62</p>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-outline uppercase">Dry Weight</p>
+<p class="font-body-lg text-body-lg text-on-surface font-semibold">78 kg</p>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-outline uppercase">Vascular Access</p>
+<p class="font-body-lg text-body-lg text-on-surface font-semibold">AV Fistula (Left Arm)</p>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-outline uppercase">Primary Dx</p>
+<p class="font-body-lg text-body-lg text-on-surface font-semibold">ESRD</p>
+</div>
+</div>
+</div>
+<div class="flex gap-md shrink-0">
+<button class="bg-primary-container text-on-primary font-body-md text-body-md font-semibold py-2 px-4 rounded-lg hover:bg-primary transition-colors h-12 flex items-center justify-center">
+                        Edit Profile
+                    </button>
+</div>
+</div>
+</section>
+<!-- Contextual Tabs -->
+<nav class="border-b border-border-subtle mb-lg overflow-x-auto">
+<ul class="flex gap-lg min-w-max px-sm">
+<li class="pb-md border-b-2 border-primary-container text-primary font-body-md text-body-md font-semibold cursor-pointer">Overview</li>
+<li class="pb-md border-b-2 border-transparent text-on-surface-variant hover:text-on-surface font-body-md text-body-md cursor-pointer transition-colors">Vitals Trends</li>
+<li class="pb-md border-b-2 border-transparent text-on-surface-variant hover:text-on-surface font-body-md text-body-md cursor-pointer transition-colors">Lab Results</li>
+<li class="pb-md border-b-2 border-transparent text-on-surface-variant hover:text-on-surface font-body-md text-body-md cursor-pointer transition-colors">Prescriptions</li>
+<li class="pb-md border-b-2 border-transparent text-on-surface-variant hover:text-on-surface font-body-md text-body-md cursor-pointer transition-colors">History</li>
+</ul>
+</nav>
+<!-- Bento Grid Layout for Overview -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Left Column: Session Summary -->
+<div class="md:col-span-8 flex flex-col gap-gutter">
+<div class="bg-surface-bg rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] p-lg flex flex-col h-full">
+<h2 class="font-headline-md text-headline-md text-on-background mb-md border-b border-border-subtle pb-sm">Recent Dialysis Sessions</h2>
+<div class="space-y-md">
+<!-- Session Row 1 -->
+<div class="flex items-center justify-between p-md bg-surface rounded-lg border border-border-subtle">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">water_drop</span>
+</div>
+<div>
+<p class="font-body-lg text-body-lg font-semibold">Today, 08:00 AM</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Duration: 4h 0m • UF Goal: 2.5L</p>
+</div>
+</div>
+<div class="text-right">
+<div class="px-2 py-1 rounded bg-success-medical/10 text-success-medical font-status-badge text-status-badge uppercase mb-1 inline-block">Completed</div>
+<p class="font-body-md text-body-md text-outline">Post-weight: 78.2 kg</p>
+</div>
+</div>
+<!-- Session Row 2 -->
+<div class="flex items-center justify-between p-md bg-surface rounded-lg border border-border-subtle">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">event</span>
+</div>
+<div>
+<p class="font-body-lg text-body-lg font-semibold">Oct 24, 08:30 AM</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Duration: 4h 0m • UF Goal: 2.2L</p>
+</div>
+</div>
+<div class="text-right">
+<div class="px-2 py-1 rounded bg-surface-variant text-on-surface-variant font-status-badge text-status-badge uppercase mb-1 inline-block">Reviewed</div>
+<p class="font-body-md text-body-md text-outline">Post-weight: 77.9 kg</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Clinical Notes & Alerts -->
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<!-- Clinical Notes -->
+<div class="bg-surface-bg rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] p-lg">
+<div class="flex justify-between items-center mb-md border-b border-border-subtle pb-sm">
+<h2 class="font-headline-md text-headline-md text-on-background">Clinical Notes</h2>
+<button class="text-primary hover:bg-surface-container-low p-xs rounded transition-colors">
+<span class="material-symbols-outlined" data-weight="fill">add</span>
+</button>
+</div>
+<div class="relative pl-6 border-l-2 border-primary-fixed">
+<div class="absolute w-3 h-3 bg-primary rounded-full -left-[7px] top-1"></div>
+<p class="font-body-md text-body-md text-on-surface mb-1 font-semibold">Attending Nephrologist</p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-2">Patient reported mild cramping during last hour of session. Adjusted UF rate slightly. Monitor electrolytes next lab draw.</p>
+<p class="font-label-caps text-label-caps text-outline">Oct 26, 12:15 PM</p>
+</div>
+</div>
+<!-- Vital Snapshot -->
+<div class="bg-surface-bg rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] p-lg">
+<h2 class="font-headline-md text-headline-md text-on-background mb-md border-b border-border-subtle pb-sm">Latest Pre-Dialysis Vitals</h2>
+<div class="grid grid-cols-2 gap-md">
+<div class="p-sm bg-surface rounded-lg">
+<p class="font-label-caps text-label-caps text-outline mb-1">BP</p>
+<p class="font-body-lg text-body-lg font-semibold text-on-surface">138/85</p>
+</div>
+<div class="p-sm bg-surface rounded-lg">
+<p class="font-label-caps text-label-caps text-outline mb-1">HR</p>
+<p class="font-body-lg text-body-lg font-semibold text-on-surface">72 bpm</p>
+</div>
+<div class="p-sm bg-surface rounded-lg">
+<p class="font-label-caps text-label-caps text-outline mb-1">Temp</p>
+<p class="font-body-lg text-body-lg font-semibold text-on-surface">36.8 °C</p>
+</div>
+<div class="p-sm bg-surface rounded-lg">
+<p class="font-label-caps text-label-caps text-outline mb-1">Weight</p>
+<p class="font-body-lg text-body-lg font-semibold text-on-surface">80.5 kg</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

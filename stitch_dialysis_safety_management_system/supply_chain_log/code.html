@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Supply Chain Log - Mercy Dialysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#005048",
+                        "primary": "#004ac6",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#0b1c30",
+                        "on-tertiary-container": "#ffede6",
+                        "outline-variant": "#c3c6d7",
+                        "surface-dim": "#cbdbf5",
+                        "outline": "#737686",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "secondary": "#006b5f",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-variant": "#d3e4fe",
+                        "inverse-primary": "#b4c5ff",
+                        "critical-alert": "#EF4444",
+                        "secondary-container": "#6df5e1",
+                        "inverse-surface": "#213145",
+                        "secondary-fixed-dim": "#4fdbc8",
+                        "background": "#f8f9ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#0053db",
+                        "border-subtle": "#E2E8F0",
+                        "surface-bg": "#FFFFFF",
+                        "primary-container": "#2563eb",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-container-low": "#eff4ff",
+                        "tertiary-container": "#bc4800",
+                        "surface-bright": "#f8f9ff",
+                        "on-background": "#0b1c30",
+                        "surface": "#f8f9ff",
+                        "surface-muted": "#F8FAFC",
+                        "surface-container": "#e5eeff",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "on-primary-fixed": "#00174b",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-tertiary-fixed": "#360f00",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary-container": "#006f64",
+                        "on-secondary-fixed": "#00201c",
+                        "success-medical": "#10B981",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary": "#943700",
+                        "on-surface-variant": "#434655",
+                        "secondary-fixed": "#71f8e4",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#eeefff",
+                        "tertiary-fixed": "#ffdbcd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "status-badge": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-metrics": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "status-badge": ["12px", { "lineHeight": "12px", "fontWeight": "700" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display-metrics": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                },
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface-muted text-on-surface font-body-md min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col py-lg gap-sm bg-surface-container-lowest border-r border-border-subtle fixed left-0 top-0 h-full w-[280px] z-40">
+<div class="px-lg pb-md">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Mercy Dialysis</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Clinical Portal</p>
+</div>
+<div class="flex-1 overflow-y-auto mt-sm">
+<a class="flex items-center gap-md px-md py-sm mx-md rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm mx-md rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all mt-xs" href="#">
+<span class="material-symbols-outlined" data-icon="monitor_heart">monitor_heart</span>
+<span class="font-label-caps text-label-caps">Vitals Entry</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm mx-md rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all mt-xs" href="#">
+<span class="material-symbols-outlined" data-icon="medical_services">medical_services</span>
+<span class="font-label-caps text-label-caps">Medication Log</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm mx-md rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all mt-xs" href="#">
+<span class="material-symbols-outlined" data-icon="report_problem">report_problem</span>
+<span class="font-label-caps text-label-caps">Incident Report</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm mx-md rounded-lg bg-primary-container text-on-primary-container font-semibold transition-all mt-xs scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2" data-weight="fill" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-label-caps text-label-caps">Supply Log</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm mx-md rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all mt-xs" href="#">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+<span class="font-label-caps text-label-caps">Patient Risk Summary</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm mx-md rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all mt-xs" href="#">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+<span class="font-label-caps text-label-caps">Messages</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-[280px] flex flex-col min-h-screen relative">
+<!-- TopAppBar (Mobile Only - Simulating standard behavior for responsive, though desktop focus requested) -->
+<header class="md:hidden flex justify-between items-center w-full px-xl h-16 z-50 bg-surface-container-lowest border-b border-border-subtle shadow-sm fixed top-0 left-0">
+<span class="material-symbols-outlined text-primary cursor-pointer active:opacity-80" data-icon="menu">menu</span>
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">Mercy Dialysis</div>
+<span class="material-symbols-outlined text-primary cursor-pointer active:opacity-80" data-icon="notifications">notifications</span>
+</header>
+<div class="pt-20 md:pt-margin-desktop px-margin-mobile md:px-margin-desktop pb-margin-desktop max-w-7xl mx-auto w-full">
+<div class="flex justify-between items-end mb-lg">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Supply Chain Log</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">Monitor inventory levels and usage.</p>
+</div>
+<a class="flex items-center gap-xs text-primary hover:text-primary-container transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="report">report</span>
+                    View Incident Reports
+                </a>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Main Supply Table Card -->
+<div class="col-span-1 lg:col-span-8 bg-surface-bg rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col">
+<div class="p-md border-b border-border-subtle bg-surface-muted/50 flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-on-surface">Recent Usage</h3>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]" data-icon="search">search</span>
+<input class="pl-xl pr-sm py-sm rounded-lg border border-border-subtle focus:border-primary focus:ring-2 focus:ring-primary/20 bg-surface-bg text-on-surface font-body-md text-body-md w-full max-w-[250px]" placeholder="Search supplies..." type="text"/>
+</div>
+</div>
+<div class="overflow-x-auto flex-1">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-muted/30 border-b border-border-subtle">
+<th class="px-md py-sm font-label-caps text-label-caps text-on-surface-variant whitespace-nowrap">Item Name</th>
+<th class="px-md py-sm font-label-caps text-label-caps text-on-surface-variant whitespace-nowrap">Qty Used</th>
+<th class="px-md py-sm font-label-caps text-label-caps text-on-surface-variant whitespace-nowrap">Timestamp</th>
+<th class="px-md py-sm font-label-caps text-label-caps text-on-surface-variant whitespace-nowrap">Stock Level</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle">
+<tr class="hover:bg-surface-muted/50 transition-colors">
+<td class="px-md py-sm">
+<div class="font-body-md text-body-md text-on-surface font-semibold">Dialyzer, High Flux</div>
+<div class="text-[12px] text-on-surface-variant">ID: D-9482</div>
+</td>
+<td class="px-md py-sm font-body-md text-body-md text-on-surface">2 units</td>
+<td class="px-md py-sm font-body-md text-body-md text-on-surface-variant">Today, 08:45 AM</td>
+<td class="px-md py-sm">
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-success-medical"></div>
+<span class="font-body-md text-body-md text-on-surface">Adequate (145)</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-muted/50 transition-colors bg-error-container/20">
+<td class="px-md py-sm">
+<div class="font-body-md text-body-md text-on-surface font-semibold">Saline 500ml</div>
+<div class="text-[12px] text-on-surface-variant">ID: S-1024</div>
+</td>
+<td class="px-md py-sm font-body-md text-body-md text-on-surface">5 bags</td>
+<td class="px-md py-sm font-body-md text-body-md text-on-surface-variant">Today, 07:30 AM</td>
+<td class="px-md py-sm">
+<div class="inline-flex items-center gap-xs px-sm py-1 bg-error-container rounded-full">
+<span class="material-symbols-outlined text-critical-alert text-[14px]" data-icon="warning">warning</span>
+<span class="font-status-badge text-status-badge text-critical-alert">Low Stock (12)</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-muted/50 transition-colors">
+<td class="px-md py-sm">
+<div class="font-body-md text-body-md text-on-surface font-semibold">Heparin Vials</div>
+<div class="text-[12px] text-on-surface-variant">ID: H-4410</div>
+</td>
+<td class="px-md py-sm font-body-md text-body-md text-on-surface">1 vial</td>
+<td class="px-md py-sm font-body-md text-body-md text-on-surface-variant">Yesterday, 14:15 PM</td>
+<td class="px-md py-sm">
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-success-medical"></div>
+<span class="font-body-md text-body-md text-on-surface">Adequate (89)</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-muted/50 transition-colors">
+<td class="px-md py-sm">
+<div class="font-body-md text-body-md text-on-surface font-semibold">Blood Lines</div>
+<div class="text-[12px] text-on-surface-variant">ID: B-7721</div>
+</td>
+<td class="px-md py-sm font-body-md text-body-md text-on-surface">2 sets</td>
+<td class="px-md py-sm font-body-md text-body-md text-on-surface-variant">Yesterday, 09:00 AM</td>
+<td class="px-md py-sm">
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-[#F59E0B]"></div>
+<span class="font-body-md text-body-md text-on-surface">Warning (45)</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Right Column Widgets -->
+<div class="col-span-1 lg:col-span-4 flex flex-col gap-gutter">
+<!-- Alert Card -->
+<div class="bg-surface-bg rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] p-md border-l-4 border-critical-alert">
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-critical-alert mt-xs" data-icon="error">error</span>
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface text-[16px]">Critical Shortage</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs mb-sm">Saline 500ml is below minimum threshold. Restock required immediately.</p>
+<button class="bg-critical-alert hover:bg-red-600 text-white font-label-caps text-label-caps py-sm px-md rounded-lg transition-colors w-full">
+                                    Order Supplies
+                                </button>
+</div>
+</div>
+</div>
+<!-- Supply Metrics -->
+<div class="bg-surface-bg rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] p-md flex-1">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-md pb-xs border-b border-border-subtle">Inventory Status</h3>
+<div class="space-y-sm">
+<div>
+<div class="flex justify-between text-[12px] mb-xs">
+<span class="text-on-surface-variant font-semibold">Total Stock Capacity</span>
+<span class="text-on-surface font-bold">78%</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 78%"></div>
+</div>
+</div>
+<div class="pt-sm">
+<div class="flex justify-between text-[12px] mb-xs">
+<span class="text-on-surface-variant font-semibold">Expiring Within 30 Days</span>
+<span class="text-critical-alert font-bold">4 Items</span>
+</div>
+<div class="w-full bg-error-container/50 h-2 rounded-full overflow-hidden">
+<div class="bg-critical-alert h-full rounded-full" style="width: 15%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

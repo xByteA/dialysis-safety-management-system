@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Trend &amp; Risk Insights Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#737686",
+                      "surface-variant": "#d3e4fe",
+                      "surface-dim": "#cbdbf5",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "surface-bg": "#FFFFFF",
+                      "on-tertiary-fixed": "#360f00",
+                      "on-primary-fixed": "#00174b",
+                      "secondary": "#006b5f",
+                      "background": "#f8f9ff",
+                      "outline-variant": "#c3c6d7",
+                      "surface-tint": "#0053db",
+                      "surface-bright": "#f8f9ff",
+                      "inverse-primary": "#b4c5ff",
+                      "on-secondary-fixed-variant": "#005048",
+                      "surface": "#f8f9ff",
+                      "inverse-on-surface": "#eaf1ff",
+                      "surface-container-low": "#eff4ff",
+                      "on-tertiary-container": "#ffede6",
+                      "surface-container": "#e5eeff",
+                      "critical-alert": "#EF4444",
+                      "inverse-surface": "#213145",
+                      "on-error-container": "#93000a",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "secondary-fixed-dim": "#4fdbc8",
+                      "primary": "#004ac6",
+                      "success-medical": "#10B981",
+                      "primary-container": "#2563eb",
+                      "error": "#ba1a1a",
+                      "tertiary": "#943700",
+                      "on-background": "#0b1c30",
+                      "on-secondary-container": "#006f64",
+                      "tertiary-container": "#bc4800",
+                      "primary-fixed": "#dbe1ff",
+                      "surface-container-high": "#dce9ff",
+                      "secondary-fixed": "#71f8e4",
+                      "on-tertiary-fixed-variant": "#7d2d00",
+                      "secondary-container": "#6df5e1",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-container": "#eeefff",
+                      "border-subtle": "#E2E8F0",
+                      "tertiary-fixed": "#ffdbcd",
+                      "surface-container-lowest": "#ffffff",
+                      "on-surface-variant": "#434655",
+                      "error-container": "#ffdad6",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-primary": "#ffffff",
+                      "on-surface": "#0b1c30",
+                      "on-secondary": "#ffffff",
+                      "surface-muted": "#F8FAFC",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed": "#00201c",
+                      "tertiary-fixed-dim": "#ffb596"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "32px",
+                      "gutter": "16px",
+                      "sm": "8px",
+                      "margin-desktop": "32px",
+                      "md": "16px",
+                      "base": "4px",
+                      "xs": "4px",
+                      "margin-mobile": "16px",
+                      "lg": "24px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Inter"],
+                      "status-badge": ["Inter"],
+                      "display-metrics": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-caps": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "status-badge": ["12px", {"lineHeight": "12px", "fontWeight": "700"}],
+                      "display-metrics": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+      </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-surface-muted text-on-surface font-body-md text-body-md h-screen flex overflow-hidden">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col h-full py-lg px-md bg-white dark:bg-on-background shadow-md shadow-[0px_4px_12px_rgba(0,0,0,0.05)] fixed left-0 top-0 w-[280px] z-40">
+<div class="mb-xl">
+<div class="flex items-center gap-md">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A clean, modern medical clinic logo featuring a stylized blue drop inside a white circle. The aesthetic is sterile, professional, and corporate, representing high-stakes medical software. The lighting is soft and neutral." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkpKp14Wk9c60FsQk6vzEB235KTkRqOstssbF4ecqwUN9zGbkMBBhkrwZyw4duQDuMyxkebMOhMXkTH7I5dwwW93-s5odMQ_FtjYCkBs8O5ykoyQg39qmhQLxB8tgVHnEqEqlH8menrWpcnyzEgZHq-iNlGPL9D9YvF7g8FUpiuf4ys_uvBCSeUO68CXMtAZLaLPe8s_F7G8E5RFpSi4cNb4PrD6x3to-YMWKcfE0nDp77irgaLV1t"/>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Mercy Dialysis</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Main Unit</p>
+</div>
+</div>
+</div>
+<div class="flex-1 space-y-sm">
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-body-md text-body-md">Patient List</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-body-md text-body-md">Clinical Forms</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-body-md text-body-md">Messages</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg bg-primary-container text-on-primary-container font-semibold transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-body-md text-body-md">Analytics</span>
+</a>
+</div>
+<div class="mt-auto space-y-sm pt-md border-t border-border-subtle">
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-body-md text-body-md">Account</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md text-body-md">Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 ml-0 md:ml-[280px] flex flex-col h-full overflow-hidden">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-margin-desktop h-16 w-full bg-surface dark:bg-on-background shadow-sm border-b border-border-subtle dark:border-outline-variant z-30 sticky top-0">
+<div class="flex-1">
+<!-- Mobile Menu Button (Visible only on mobile) -->
+<button class="md:hidden p-sm text-on-surface-variant">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim hidden md:block">
+                DiaClinic Management
+            </div>
+<div class="flex-1 flex justify-end items-center gap-md">
+<button class="p-sm text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80 rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-sm text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80 rounded-full hidden sm:block">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="p-sm text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80 rounded-full hidden sm:block">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<img alt="Dr. Clinical Administrator Profile" class="w-8 h-8 rounded-full ml-sm object-cover border border-border-subtle" data-alt="A professional headshot of a clinical administrator in a modern office setting. The person is wearing a white medical coat. The background is a slightly blurred, sterile white clinic environment with cool blue lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuADC2niQnw9g-FWkqLGDQfFvdpHt74llv4A6WpWyy5sInmunD10BhUyKwMmsYSFjxN-kXjT0APw0tuU0REmO1B7vl5HmuhMs2gi8CDqXF9v1AE7pow6CVq1Gpiv604B0JqaVTSoLQvvSz4BqP4ReyuaLURBgUpl_rzjUlFjhu4ye4DHgXzgvlY_xh2vrAOqfTAZtjwZSQmpgyIBpVO_qB8VrJsvT58SW7eCLtSQfMFhNPmLiXxoUXOH"/>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 overflow-y-auto p-margin-mobile md:p-margin-desktop">
+<div class="max-w-7xl mx-auto space-y-xl">
+<!-- Page Header & Filters -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-md">
+<div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Trend &amp; Risk Insights</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">Population-level mineral analysis and AI safety monitoring.</p>
+</div>
+<div class="flex flex-wrap gap-sm w-full md:w-auto">
+<select class="bg-surface-bg border border-border-subtle rounded-lg px-md py-sm font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+<option>Test Type: Potassium</option>
+<option>Test Type: Calcium</option>
+<option>Test Type: Phosphorus</option>
+</select>
+<select class="bg-surface-bg border border-border-subtle rounded-lg px-md py-sm font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+<option>Last 30 Days</option>
+<option>Last 90 Days</option>
+<option>Year to Date</option>
+</select>
+<select class="bg-surface-bg border border-border-subtle rounded-lg px-md py-sm font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+<option>All Units</option>
+<option>Unit A</option>
+<option>Unit B</option>
+</select>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- AI Alert Card (Critical) -->
+<div class="col-span-1 md:col-span-12 bg-white rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] border-l-4 border-critical-alert p-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-lg">
+<div class="flex items-start gap-md">
+<div class="bg-error-container text-on-error-container p-sm rounded-full flex-shrink-0 mt-xs md:mt-0">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div>
+<div class="flex items-center gap-sm mb-xs">
+<h3 class="font-headline-md text-headline-md text-on-surface">AI Risk Alert</h3>
+<span class="bg-error-container text-on-error-container font-status-badge text-status-badge px-sm py-[2px] rounded-full">HIGH SEVERITY</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Unusual pattern detected — possible equipment issue at <strong class="text-on-surface">Unit B</strong>.</p>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">Deviation in dialysate conductivity across 14 consecutive treatments.</p>
+</div>
+</div>
+<div class="w-full md:w-auto flex flex-col sm:flex-row gap-sm">
+<button class="bg-white border border-border-subtle text-on-surface px-lg py-sm rounded-lg font-body-md text-body-md hover:bg-surface-container-low transition-colors whitespace-nowrap">Dismiss</button>
+<button class="bg-critical-alert text-on-error px-lg py-sm rounded-lg font-body-md text-body-md hover:opacity-90 transition-opacity whitespace-nowrap">Investigate Unit B</button>
+</div>
+</div>
+<!-- Main Trend Chart -->
+<div class="col-span-1 md:col-span-8 bg-white rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] p-lg flex flex-col min-h-[400px]">
+<div class="flex justify-between items-center mb-md border-b border-border-subtle pb-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface">Population Potassium Trends</h3>
+<button class="text-primary hover:text-primary-container p-xs rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">download</span>
+</button>
+</div>
+<div class="flex-1 relative w-full h-full">
+<canvas id="trendChart"></canvas>
+</div>
+</div>
+<!-- Side Metrics -->
+<div class="col-span-1 md:col-span-4 flex flex-col gap-gutter">
+<!-- Risk Gauge -->
+<div class="bg-white rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] p-lg flex-1 flex flex-col justify-between">
+<div class="border-b border-border-subtle pb-sm mb-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Population Risk Score</h3>
+</div>
+<div class="flex flex-col items-center justify-center flex-1">
+<div class="relative w-32 h-32 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke="#E2E8F0" stroke-width="10"></circle>
+<circle class="transition-all duration-1000 ease-out" cx="50" cy="50" fill="none" r="45" stroke="#F59E0B" stroke-dasharray="283" stroke-dashoffset="113" stroke-width="10"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-display-metrics text-display-metrics text-on-surface">68</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">/ 100</span>
+</div>
+</div>
+<div class="mt-md text-center">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed-variant font-status-badge text-status-badge px-sm py-[2px] rounded-full inline-block mb-xs">ELEVATED</span>
+<p class="font-body-md text-body-md text-on-surface-variant">Driven by recent fluctuations in Unit B.</p>
+</div>
+</div>
+</div>
+<!-- Key Indicators -->
+<div class="bg-white rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] p-md flex-1">
+<div class="border-b border-border-subtle pb-xs mb-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface text-sm">Key Variations</h3>
+</div>
+<ul class="space-y-sm">
+<li class="flex justify-between items-center p-sm bg-surface-muted rounded-md">
+<span class="font-body-md text-body-md text-on-surface">Hyperkalemia Events</span>
+<div class="flex items-center gap-xs">
+<span class="font-body-md text-body-md text-on-surface font-semibold">12</span>
+<span class="material-symbols-outlined text-critical-alert text-sm">trending_up</span>
+</div>
+</li>
+<li class="flex justify-between items-center p-sm bg-surface-muted rounded-md">
+<span class="font-body-md text-body-md text-on-surface">Hypokalemia Events</span>
+<div class="flex items-center gap-xs">
+<span class="font-body-md text-body-md text-on-surface font-semibold">3</span>
+<span class="material-symbols-outlined text-success-medical text-sm">trending_down</span>
+</div>
+</li>
+<li class="flex justify-between items-center p-sm bg-surface-muted rounded-md border border-critical-alert/30 bg-error-container/10">
+<span class="font-body-md text-body-md text-on-surface">Unit B Variance</span>
+<div class="flex items-center gap-xs">
+<span class="font-body-md text-body-md text-critical-alert font-semibold">+14%</span>
+<span class="material-symbols-outlined text-critical-alert text-sm">warning</span>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Chart Configuration Script -->
+<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const ctx = document.getElementById('trendChart').getContext('2d');
+            
+            // Subtle gradient for the main line
+            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, 'rgba(37, 99, 235, 0.2)'); // primary-container with opacity
+            gradient.addColorStop(1, 'rgba(37, 99, 235, 0)');
+
+            const data = {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 'Week 7', 'Week 8'],
+                datasets: [
+                    {
+                        label: 'Overall Population Avg (mmol/L)',
+                        data: [4.2, 4.3, 4.1, 4.2, 4.4, 4.3, 4.2, 4.3],
+                        borderColor: '#2563eb', // primary-container
+                        backgroundColor: gradient,
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: '#ffffff',
+                        pointBorderColor: '#2563eb',
+                        pointBorderWidth: 2,
+                        pointRadius: 4,
+                        pointHoverRadius: 6
+                    },
+                    {
+                        label: 'Unit B Avg (mmol/L)',
+                        data: [4.1, 4.2, 4.1, 4.8, 5.2, 5.1, 5.3, 5.0], // Spike representing the issue
+                        borderColor: '#EF4444', // critical-alert
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        fill: false,
+                        tension: 0.4,
+                        pointBackgroundColor: '#ffffff',
+                        pointBorderColor: '#EF4444',
+                        pointBorderWidth: 2,
+                        pointRadius: 4,
+                        pointHoverRadius: 6
+                    }
+                ]
+            };
+
+            const config = {
+                type: 'line',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            align: 'end',
+                            labels: {
+                                usePointStyle: true,
+                                boxWidth: 8,
+                                font: {
+                                    family: 'Inter',
+                                    size: 12
+                                },
+                                color: '#434655' // on-surface-variant
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: '#FFFFFF',
+                            titleColor: '#0b1c30',
+                            bodyColor: '#434655',
+                            borderColor: '#E2E8F0',
+                            borderWidth: 1,
+                            padding: 12,
+                            boxPadding: 4,
+                            usePointStyle: true,
+                            titleFont: { family: 'Inter', size: 14, weight: '600' },
+                            bodyFont: { family: 'Inter', size: 13 }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false,
+                                drawBorder: false
+                            },
+                            ticks: {
+                                font: { family: 'Inter', size: 12 },
+                                color: '#737686' // outline
+                            }
+                        },
+                        y: {
+                            min: 3.0,
+                            max: 6.0,
+                            grid: {
+                                color: '#E2E8F0', // border-subtle
+                                borderDash: [4, 4],
+                                drawBorder: false
+                            },
+                            ticks: {
+                                font: { family: 'Inter', size: 12 },
+                                color: '#737686', // outline
+                                stepSize: 0.5
+                            },
+                            title: {
+                                display: true,
+                                text: 'Potassium Level (mmol/L)',
+                                font: { family: 'Inter', size: 12 },
+                                color: '#737686'
+                            }
+                        }
+                    },
+                    interaction: {
+                        intersect: false,
+                        mode: 'index',
+                    },
+                }
+            };
+
+            new Chart(ctx, config);
+        });
+    </script>
+</body></html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Prescription Management - DiaClinic</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#737686",
+                    "surface-variant": "#d3e4fe",
+                    "surface-dim": "#cbdbf5",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "surface-bg": "#FFFFFF",
+                    "on-tertiary-fixed": "#360f00",
+                    "on-primary-fixed": "#00174b",
+                    "secondary": "#006b5f",
+                    "background": "#f8f9ff",
+                    "outline-variant": "#c3c6d7",
+                    "surface-tint": "#0053db",
+                    "surface-bright": "#f8f9ff",
+                    "inverse-primary": "#b4c5ff",
+                    "on-secondary-fixed-variant": "#005048",
+                    "surface": "#f8f9ff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-container-low": "#eff4ff",
+                    "on-tertiary-container": "#ffede6",
+                    "surface-container": "#e5eeff",
+                    "critical-alert": "#EF4444",
+                    "inverse-surface": "#213145",
+                    "on-error-container": "#93000a",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "secondary-fixed-dim": "#4fdbc8",
+                    "primary": "#004ac6",
+                    "success-medical": "#10B981",
+                    "primary-container": "#2563eb",
+                    "error": "#ba1a1a",
+                    "tertiary": "#943700",
+                    "on-background": "#0b1c30",
+                    "on-secondary-container": "#006f64",
+                    "tertiary-container": "#bc4800",
+                    "primary-fixed": "#dbe1ff",
+                    "surface-container-high": "#dce9ff",
+                    "secondary-fixed": "#71f8e4",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "secondary-container": "#6df5e1",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#eeefff",
+                    "border-subtle": "#E2E8F0",
+                    "tertiary-fixed": "#ffdbcd",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#434655",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-primary": "#ffffff",
+                    "on-surface": "#0b1c30",
+                    "on-secondary": "#ffffff",
+                    "surface-muted": "#F8FAFC",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#00201c",
+                    "tertiary-fixed-dim": "#ffb596"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "gutter": "16px",
+                    "sm": "8px",
+                    "margin-desktop": "32px",
+                    "md": "16px",
+                    "base": "4px",
+                    "xs": "4px",
+                    "margin-mobile": "16px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "status-badge": ["Inter"],
+                    "display-metrics": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "status-badge": ["12px", {"lineHeight": "12px", "fontWeight": "700"}],
+                    "display-metrics": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        }
+      }
+    </script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0; }
+        .material-symbols-outlined.fill-icon { font-variation-settings: 'FILL' 1; }
+        /* Toggle Switch CSS */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #2563EB;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #2563EB;
+        }
+        .toggle-checkbox:checked + .toggle-label:after {
+            transform: translateX(100%);
+            border-color: white;
+        }
+        .toggle-label {
+            transition: background-color 0.2s ease-in-out;
+        }
+        .toggle-label:after {
+            transition: transform 0.2s ease-in-out;
+        }
+    </style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+</head>
+<body class="bg-surface-muted text-on-background font-body-md antialiased min-h-screen flex">
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex bg-white dark:bg-on-background shadow-[0px_4px_12px_rgba(0,0,0,0.05)] fixed left-0 top-0 h-full w-[280px] flex-col py-lg px-md z-40">
+<div class="mb-xl flex items-center gap-sm px-sm">
+<span class="material-symbols-outlined text-primary fill-icon text-3xl">local_hospital</span>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Mercy Dialysis</h1>
+<p class="font-body-md text-body-md text-on-surface-variant text-xs">Main Unit</p>
+</div>
+</div>
+<ul class="flex flex-col gap-sm flex-grow">
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm bg-primary-container text-on-primary-container font-semibold rounded-lg transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-body-md text-body-md">Patient List</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-body-md text-body-md">Clinical Forms</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-body-md text-body-md">Messages</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-body-md text-body-md">Analytics</span>
+</a>
+</li>
+</ul>
+<div class="mt-auto border-t border-border-subtle pt-md">
+<ul class="flex flex-col gap-sm">
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-body-md text-body-md">Account</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md text-body-md">Logout</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col min-h-screen w-full md:ml-[280px]">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-on-background fixed top-0 w-full md:w-[calc(100%-280px)] z-50 border-b border-border-subtle dark:border-outline-variant shadow-sm flex justify-between items-center px-margin-desktop h-16">
+<div class="flex items-center flex-1">
+<div class="md:hidden mr-md cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-on-surface-variant text-2xl">menu</span>
+</div>
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim md:hidden mr-md">
+                    DiaClinic
+                </div>
+<div class="relative w-full max-w-md hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border border-border-subtle rounded-lg py-1.5 pl-10 pr-4 font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="Search patients, meds..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md ml-auto">
+<button class="text-on-surface-variant hover:bg-surface-container-low transition-colors p-2 rounded-full cursor-pointer active:opacity-80 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-critical-alert rounded-full"></span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-low transition-colors p-2 rounded-full cursor-pointer active:opacity-80 hidden md:block">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-low transition-colors p-2 rounded-full cursor-pointer active:opacity-80 hidden md:block">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold text-sm ml-sm cursor-pointer border border-border-subtle overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A small circular profile avatar featuring a minimal geometric logo or initials in a modern, clean healthcare style. The background is a soft blue with deeper blue text, perfectly lit in a studio setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1ypfTNaV_BAHE6MhjMtnyfoKN7SL0YAv-QilHLM_iHDbYeuuh5jLKx_RCf-qZlDNsR14XfolP-L4Dm6dm1gR2_9yozwU2jm8bcvM5ygrHIzGNYYHoFPgfyK7H37GJLQz4IAij0cYaoeuZKCJ_hEbek6sDm14pjjAk0PvgL-9DcjuIvh0yXkgwVPbfCXI83U4a6yQPz9y_nyAtLBlVpK27za6boo9neDmsUnkniiBvqV1hCDblC-wH"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 pt-[80px] p-margin-mobile md:p-margin-desktop overflow-y-auto">
+<!-- Patient Header Context -->
+<div class="mb-lg flex flex-col md:flex-row md:items-end justify-between gap-md border-b border-border-subtle pb-md">
+<div>
+<div class="flex items-center gap-sm mb-xs">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Prescription Management</span>
+<span class="bg-error-container text-on-error-container px-2 py-0.5 rounded-full font-status-badge text-status-badge">High Risk Monitor</span>
+</div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background">Robert Chang</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">DOB: 11/24/1958 • MRN: #49281-A • Hemodialysis (MWF)</p>
+</div>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-lg">
+<!-- Left Column: Prescription Form -->
+<div class="xl:col-span-2">
+<div class="bg-surface-bg rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] border border-surface-container-low p-lg h-full">
+<div class="flex items-center justify-between mb-md border-b border-border-subtle pb-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">edit_document</span>
+                                New Prescription
+                            </h3>
+</div>
+<form class="space-y-lg mt-md">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Medication Name -->
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface mb-xs">Medication Name <span class="text-critical-alert">*</span></label>
+<input class="w-full bg-surface-bg border border-border-subtle rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary" type="text" value="Erythropoietin (Epogen)"/>
+</div>
+<!-- Route -->
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface mb-xs">Route <span class="text-critical-alert">*</span></label>
+<select class="w-full bg-surface-bg border border-border-subtle rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary">
+<option>Intravenous (IV)</option>
+<option>Subcutaneous (SQ)</option>
+<option>Oral (PO)</option>
+</select>
+</div>
+<!-- Dosage -->
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface mb-xs">Dosage <span class="text-critical-alert">*</span></label>
+<div class="flex">
+<input class="w-full bg-surface-bg border border-border-subtle rounded-l-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary" type="number" value="4000"/>
+<span class="inline-flex items-center px-3 rounded-r-lg border border-l-0 border-border-subtle bg-surface-container-low text-on-surface-variant text-sm">
+                                            Units
+                                        </span>
+</div>
+</div>
+<!-- Frequency -->
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface mb-xs">Frequency <span class="text-critical-alert">*</span></label>
+<select class="w-full bg-surface-bg border border-border-subtle rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary">
+<option>With each dialysis treatment</option>
+<option>Once weekly</option>
+<option>Daily</option>
+</select>
+</div>
+<!-- Start Date -->
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface mb-xs">Start Date</label>
+<input class="w-full bg-surface-bg border border-border-subtle rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary" type="date" value="2023-10-25"/>
+</div>
+<!-- End Date -->
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface mb-xs">End Date (Optional)</label>
+<input class="w-full bg-surface-bg border border-border-subtle rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary" type="date"/>
+</div>
+</div>
+<!-- Notes -->
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface mb-xs">Clinical Notes</label>
+<textarea class="w-full bg-surface-bg border border-border-subtle rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary" placeholder="Enter titration instructions or specific monitoring needs..." rows="2"></textarea>
+</div>
+<!-- Action Area -->
+<div class="bg-surface-container-low rounded-lg p-md flex flex-col sm:flex-row items-center justify-between border border-surface-variant gap-md">
+<div class="flex items-center">
+<div class="relative inline-block w-12 h-6 align-middle select-none transition duration-200 ease-in mr-3">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-surface-variant appearance-none cursor-pointer z-10" id="notify-nurse" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-variant cursor-pointer" for="notify-nurse"></label>
+</div>
+<div>
+<label class="font-headline-md text-headline-md text-on-surface text-base block cursor-pointer" for="notify-nurse">Notify Assigned Nurse</label>
+<span class="font-body-md text-xs text-on-surface-variant">Instantly alerts Nurse Station upon submission</span>
+</div>
+</div>
+<div class="flex gap-sm w-full sm:w-auto">
+<button class="px-md py-2 border border-border-subtle text-on-surface font-label-caps text-label-caps rounded-lg hover:bg-surface-container-low transition-colors w-full sm:w-auto" type="button">Cancel</button>
+<button class="px-md py-2 bg-primary-container text-on-primary-container font-label-caps text-label-caps rounded-lg hover:opacity-90 transition-opacity w-full sm:w-auto flex items-center justify-center gap-xs" type="button">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                                        Sign &amp; Submit
+                                    </button>
+</div>
+</div>
+</form>
+</div>
+</div>
+<!-- Right Column: History -->
+<div class="xl:col-span-1">
+<div class="bg-surface-bg rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] border border-surface-container-low p-lg h-full flex flex-col">
+<div class="flex items-center justify-between mb-md border-b border-border-subtle pb-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">history</span>
+                                Prescription History
+                            </h3>
+<button class="text-primary hover:underline font-body-md text-sm">View All</button>
+</div>
+<div class="flex flex-col gap-md flex-1 overflow-y-auto pr-2">
+<!-- Active Med Card -->
+<div class="border border-border-subtle rounded-lg p-sm relative bg-surface-muted">
+<div class="absolute top-sm right-sm flex gap-1">
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors" title="Edit"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+<button class="p-1 text-on-surface-variant hover:text-critical-alert transition-colors" title="Discontinue"><span class="material-symbols-outlined text-[18px]">cancel</span></button>
+</div>
+<div class="mb-1">
+<span class="bg-green-100 text-green-800 px-2 py-0.5 rounded font-status-badge text-[10px] uppercase">Active</span>
+</div>
+<h4 class="font-headline-md text-base text-on-background mb-0.5">Sevelamer (Renvela)</h4>
+<p class="font-body-md text-sm text-on-surface-variant">800 mg • PO • TID with meals</p>
+<p class="font-body-md text-xs text-outline mt-1">Started: 08/12/2023</p>
+</div>
+<!-- Discontinued Med Card -->
+<div class="border border-border-subtle rounded-lg p-sm relative opacity-75">
+<div class="mb-1">
+<span class="bg-surface-variant text-on-surface-variant px-2 py-0.5 rounded font-status-badge text-[10px] uppercase">Discontinued</span>
+</div>
+<h4 class="font-headline-md text-base text-on-background line-through mb-0.5">Lisinopril</h4>
+<p class="font-body-md text-sm text-on-surface-variant">10 mg • PO • Daily</p>
+<p class="font-body-md text-xs text-outline mt-1">Ended: 09/01/2023 (Hypotension during HD)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

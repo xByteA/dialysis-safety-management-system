@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Medication Administration Log - Mercy Dialysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed-variant": "#005048",
+                      "primary": "#004ac6",
+                      "on-secondary": "#ffffff",
+                      "on-surface": "#0b1c30",
+                      "on-tertiary-container": "#ffede6",
+                      "outline-variant": "#c3c6d7",
+                      "surface-dim": "#cbdbf5",
+                      "outline": "#737686",
+                      "tertiary-fixed-dim": "#ffb596",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "secondary": "#006b5f",
+                      "on-error-container": "#93000a",
+                      "primary-fixed": "#dbe1ff",
+                      "surface-container-highest": "#d3e4fe",
+                      "surface-variant": "#d3e4fe",
+                      "inverse-primary": "#b4c5ff",
+                      "critical-alert": "#EF4444",
+                      "secondary-container": "#6df5e1",
+                      "inverse-surface": "#213145",
+                      "secondary-fixed-dim": "#4fdbc8",
+                      "background": "#f8f9ff",
+                      "on-tertiary": "#ffffff",
+                      "surface-tint": "#0053db",
+                      "border-subtle": "#E2E8F0",
+                      "surface-bg": "#FFFFFF",
+                      "primary-container": "#2563eb",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "surface-container-low": "#eff4ff",
+                      "tertiary-container": "#bc4800",
+                      "surface-bright": "#f8f9ff",
+                      "on-background": "#0b1c30",
+                      "surface": "#f8f9ff",
+                      "surface-muted": "#F8FAFC",
+                      "surface-container": "#e5eeff",
+                      "on-tertiary-fixed-variant": "#7d2d00",
+                      "on-primary-fixed": "#00174b",
+                      "inverse-on-surface": "#eaf1ff",
+                      "on-tertiary-fixed": "#360f00",
+                      "surface-container-lowest": "#ffffff",
+                      "on-error": "#ffffff",
+                      "surface-container-high": "#dce9ff",
+                      "on-secondary-container": "#006f64",
+                      "on-secondary-fixed": "#00201c",
+                      "success-medical": "#10B981",
+                      "on-primary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "tertiary": "#943700",
+                      "on-surface-variant": "#434655",
+                      "secondary-fixed": "#71f8e4",
+                      "error-container": "#ffdad6",
+                      "on-primary-container": "#eeefff",
+                      "tertiary-fixed": "#ffdbcd"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "32px",
+                      "md": "16px",
+                      "xs": "4px",
+                      "margin-mobile": "16px",
+                      "base": "4px",
+                      "xl": "32px",
+                      "sm": "8px",
+                      "lg": "24px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "status-badge": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "display-metrics": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "status-badge": [
+                              "12px",
+                              {
+                                      "lineHeight": "12px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-metrics": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface-muted min-h-screen text-on-surface font-body-lg text-body-lg">
+<!-- Top App Bar (Mobile) -->
+<div class="md:hidden flex justify-between items-center w-full px-margin-mobile h-16 z-50 bg-surface-container-lowest border-b border-border-subtle shadow-sm">
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">
+            Mercy Dialysis
+        </div>
+<div class="flex items-center gap-sm cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-primary" data-icon="notifications">notifications</span>
+<img alt="Nurse Profile Avatar" class="w-8 h-8 rounded-full object-cover" data-alt="A small, professional headshot of a nurse in blue scrubs, smiling softly in a brightly lit clinical setting. Clean, corporate modern healthcare style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1vqJD2k8n0yfHw50zX5f8-uEWVTYpwrLh9jWTkgZASDFHhrq3Mv_uAzxH_e27TH01JHLQ3JD-1e7WUwSkwvdDlv7FPCSeP1zuVOzegfTq2OPFtATYNV31NpHu7_WQyToSiAS3QLUjBvm6-P7RMKFPpIFi2r_E0NMk_BLUreN5VG9ykxAhHlxABDkyv88uxKMOb2ykZoLnIZUxxo5ZjcX8j09YzPtcQvGngyd4ZSF-0J1qs4Ov7lX9"/>
+</div>
+</div>
+<!-- Side Navigation (Desktop) -->
+<nav class="hidden md:flex flex-col py-lg gap-sm fixed left-0 top-0 h-full w-[280px] bg-surface-container-lowest border-r border-border-subtle z-40">
+<div class="px-lg pb-md">
+<div class="font-headline-md text-headline-md font-bold text-primary">Mercy Dialysis</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mt-xs">Clinical Portal</div>
+</div>
+<a class="flex items-center gap-md px-md py-sm mx-md text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm mx-md text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="monitor_heart">monitor_heart</span>
+<span class="font-label-caps text-label-caps">Vitals Entry</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm mx-md bg-primary-container text-on-primary-container font-semibold rounded-lg transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="medical_services">medical_services</span>
+<span class="font-label-caps text-label-caps">Medication Log</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm mx-md text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="report_problem">report_problem</span>
+<span class="font-label-caps text-label-caps">Incident Report</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm mx-md text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-caps text-label-caps">Supply Log</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm mx-md text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+<span class="font-label-caps text-label-caps">Patient Risk Summary</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm mx-md text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+<span class="font-label-caps text-label-caps">Messages</span>
+</a>
+<div class="mt-auto px-lg flex items-center gap-sm">
+<img alt="Nurse Profile Avatar" class="w-10 h-10 rounded-full object-cover" data-alt="A small, professional headshot of a nurse in blue scrubs, smiling softly in a brightly lit clinical setting. Clean, corporate modern healthcare style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQK06YPHgX99SnDNWD4lXdN3NlIMFKVnSfqXw08DRVvblw0kqfCfGovawT4tlhlOpWQp5Jzw-WNLP4ocTuJiNYSFSf1i_beC1PTA9WaBidvg6w6TswC2T4SujeIKc1IYR5N2axMNFeeVL_J49kwEEO4mEeRKiAQn7b6f_e3Y3TYXeIYDll7WGztN07uJ90T27hUbPT-dyyQBpf_fuZZrXIl_TgWX3w53JznJ9tG9vjIuw77_oejqiD"/>
+<div>
+<div class="font-body-md text-body-md font-semibold">Jane Doe, RN</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">Log out</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="md:ml-[280px] p-margin-mobile md:p-margin-desktop min-h-screen pb-24 md:pb-margin-desktop">
+<!-- Header & Patient Context -->
+<header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-xl gap-md">
+<div>
+<a class="inline-flex items-center gap-xs text-primary font-body-md text-body-md hover:underline mb-sm" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="arrow_back">arrow_back</span>
+                    Back to Patient Risk Summary
+                </a>
+<h1 class="font-headline-lg text-headline-lg md:text-[32px] md:leading-[40px] font-bold text-on-surface">Medication Administration</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">Session ID: #88241 • Room 4B</p>
+</div>
+<div class="bg-surface-bg border border-border-subtle rounded-xl p-md flex items-center gap-md shadow-sm w-full md:w-auto">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary font-bold text-lg">RC</div>
+<div>
+<h2 class="font-headline-md text-headline-md font-semibold">Robert Chang</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">DOB: 11/04/1952 (71y)</p>
+</div>
+</div>
+</header>
+<!-- Quick Actions -->
+<div class="flex gap-md mb-lg">
+<button class="bg-surface-bg border border-border-subtle text-on-surface px-md py-sm rounded-lg shadow-sm font-label-caps text-label-caps flex items-center gap-xs hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="message">message</span>
+                Message Doctor
+            </button>
+<button class="bg-surface-bg border border-border-subtle text-on-surface px-md py-sm rounded-lg shadow-sm font-label-caps text-label-caps flex items-center gap-xs hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="history">history</span>
+                View Med History
+            </button>
+</div>
+<!-- Overdue Medications Section -->
+<section class="mb-xl">
+<h3 class="font-label-caps text-label-caps text-critical-alert flex items-center gap-xs mb-sm">
+<span class="material-symbols-outlined text-sm" data-icon="warning">warning</span>
+                Overdue Medications
+            </h3>
+<div class="bg-surface-bg rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] border-l-4 border-critical-alert overflow-hidden">
+<div class="p-md md:p-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-md border-b border-border-subtle last:border-0 bg-error-container/10">
+<div class="flex items-start gap-md flex-1">
+<input class="mt-1 w-5 h-5 rounded border-critical-alert text-critical-alert focus:ring-critical-alert" id="med-heparin" type="checkbox"/>
+<div>
+<label class="font-headline-md text-headline-md font-semibold cursor-pointer" for="med-heparin">Heparin</label>
+<p class="font-body-md text-body-md text-on-surface mt-xs">1000 units • IV Push</p>
+<p class="font-label-caps text-label-caps text-critical-alert mt-sm">Due: 09:00 AM (Overdue by 45m)</p>
+</div>
+</div>
+<button class="w-full md:w-auto bg-critical-alert text-on-error px-lg py-sm rounded-lg font-label-caps text-label-caps shadow-sm hover:bg-red-600 transition-colors h-12 md:h-auto">
+                        Mark as Given
+                    </button>
+</div>
+</div>
+</section>
+<!-- Scheduled Medications Section -->
+<section>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-sm">Scheduled Medications (Current Session)</h3>
+<div class="bg-surface-bg rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.05)] overflow-hidden">
+<!-- Medication Row 1 -->
+<div class="p-md md:p-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-md border-b border-border-subtle hover:bg-surface-muted transition-colors">
+<div class="flex items-start gap-md flex-1">
+<input class="mt-1 w-5 h-5 rounded border-outline text-primary-container focus:ring-primary-container" id="med-erythropoietin" type="checkbox"/>
+<div>
+<label class="font-headline-md text-headline-md font-semibold cursor-pointer" for="med-erythropoietin">Erythropoietin (Epogen)</label>
+<p class="font-body-md text-body-md text-on-surface mt-xs">4000 units • IV Push</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-sm">Due: 11:30 AM</p>
+</div>
+</div>
+<button class="w-full md:w-auto bg-surface-bg border border-primary-container text-primary-container px-lg py-sm rounded-lg font-label-caps text-label-caps shadow-sm hover:bg-surface-container-low transition-colors h-12 md:h-auto">
+                        Mark as Given
+                    </button>
+</div>
+<!-- Medication Row 2 -->
+<div class="p-md md:p-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-md hover:bg-surface-muted transition-colors">
+<div class="flex items-start gap-md flex-1">
+<input class="mt-1 w-5 h-5 rounded border-outline text-primary-container focus:ring-primary-container" id="med-iron" type="checkbox"/>
+<div>
+<label class="font-headline-md text-headline-md font-semibold cursor-pointer" for="med-iron">Iron Sucrose (Venofer)</label>
+<p class="font-body-md text-body-md text-on-surface mt-xs">100 mg • IV Slow Push</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-sm">Due: 12:00 PM</p>
+</div>
+</div>
+<button class="w-full md:w-auto bg-surface-bg border border-primary-container text-primary-container px-lg py-sm rounded-lg font-label-caps text-label-caps shadow-sm hover:bg-surface-container-low transition-colors h-12 md:h-auto">
+                        Mark as Given
+                    </button>
+</div>
+</div>
+</section>
+</main>
+</body></html>
