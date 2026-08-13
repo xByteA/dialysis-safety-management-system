@@ -11,6 +11,7 @@ export default function Header({ toggleMobileMenu }) {
   const { language, toggleLanguage } = useContext(LanguageContext);
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
   const t = useTranslationNew(language);
+  const isRtl = language === "ar";
 
   // Keep alert badge sync'd
   useEffect(() => {
@@ -91,7 +92,7 @@ export default function Header({ toggleMobileMenu }) {
         </div>
         <div className="md:hidden block">
           <span className="font-bold text-primary font-headline-lg-mobile text-headline-lg-mobile">
-            Mercy Dialysis
+            {t("sidebar.brand.name")}
           </span>
         </div>
       </div>
@@ -99,9 +100,9 @@ export default function Header({ toggleMobileMenu }) {
       {/* Global Search */}
       <div className="flex-1 max-w-md px-md hidden lg:block">
         <div className="relative">
-          <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+          <span className={`material-symbols-outlined absolute ${isRtl ? "right-3" : "left-3"} top-1/2 -translate-y-1/2 text-on-surface-variant`}>search</span>
           <input
-            className="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-border-subtle rounded-full focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-body-md"
+            className={`w-full ${isRtl ? "pr-10 pl-4" : "pl-10 pr-4"} py-2 bg-surface-container-low border border-border-subtle rounded-full focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-body-md`}
             placeholder={t("common.search.placeholder")}
             type="text"
             onKeyDown={(e) => {
@@ -128,7 +129,7 @@ export default function Header({ toggleMobileMenu }) {
           
           {/* Language Dropdown Menu */}
           {showLanguageMenu && (
-            <div className="absolute right-0 mt-2 w-32 bg-white dark:bg-on-background border border-border-subtle dark:border-outline-variant rounded-lg shadow-lg z-50 overflow-hidden" data-language-menu>
+            <div className={`absolute ${isRtl ? "left-0" : "right-0"} mt-2 w-32 bg-white dark:bg-on-background border border-border-subtle dark:border-outline-variant rounded-lg shadow-lg z-50 overflow-hidden`} data-language-menu>
               <button
                 onClick={() => {
                   if (language !== "en") {
@@ -136,7 +137,7 @@ export default function Header({ toggleMobileMenu }) {
                   }
                   setShowLanguageMenu(false);
                 }}
-                className={`w-full px-4 py-2 text-sm text-left hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors ${
+                className={`w-full px-4 py-2 text-sm text-start hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors ${
                   language === "en" ? "bg-primary-container text-white dark:text-white font-bold" : "text-on-surface dark:text-white"
                 }`}
               >
@@ -149,7 +150,7 @@ export default function Header({ toggleMobileMenu }) {
                   }
                   setShowLanguageMenu(false);
                 }}
-                className={`w-full px-4 py-2 text-sm text-left hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors border-t border-border-subtle dark:border-outline-variant ${
+                className={`w-full px-4 py-2 text-sm text-start hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors border-t border-border-subtle dark:border-outline-variant ${
                   language === "ar" ? "bg-primary-container text-white dark:text-white font-bold" : "text-on-surface dark:text-white"
                 }`}
               >
@@ -177,9 +178,9 @@ export default function Header({ toggleMobileMenu }) {
           <span className="material-symbols-outlined">settings</span>
         </button>
 
-        <div className="ml-sm pl-sm border-l border-border-subtle flex items-center gap-sm">
+        <div className={`ml-sm pl-sm ${isRtl ? "border-r pr-sm mr-sm ml-0 pl-0" : "border-l pl-sm ml-sm mr-0 pr-0"} border-border-subtle flex items-center gap-sm`}>
           <img
-            alt="Clinician Profile"
+            alt={t("profile")}
             className="w-8 h-8 rounded-full object-cover cursor-pointer hover:opacity-80 transition-opacity border border-border-subtle"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuC34eQedf9VG7ubligxRM2hrEQ-SW5kBh6UTHGGsDAlmrfDytAlb2CNVOX53sp9al-Mx6ZhU2CaXtfvImJf69rvKgiojpVtrvV_4GBb0ycK0JCqmrbz9oeN5sDATf-ZoFgNX0yoknxkctXZQ3u-h5jB9HgMimk6Ok-aj1tmYf23WgcVAjxYY4zKftVzhUjXUcYhjsgN7GOha93PyRrFnqMrifqRSCaXAjDzRsPYHi3t4CHRQDF2bsCM"
             onClick={() => navigate("/doctor-dashboard")}

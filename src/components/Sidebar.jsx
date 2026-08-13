@@ -6,6 +6,7 @@ import { useTranslationNew } from "../utils/i18n";
 export default function Sidebar({ isOpen, toggleMobileMenu }) {
   const { language } = useContext(LanguageContext);
   const t = useTranslationNew(language);
+  const isRtl = language === "ar";
 
   const categories = [
     {
@@ -71,8 +72,8 @@ export default function Sidebar({ isOpen, toggleMobileMenu }) {
 
       {/* Sidebar Panel */}
       <nav
-        className={`fixed left-0 top-0 h-full w-[280px] bg-white dark:bg-on-background border-r border-border-subtle dark:border-outline-variant flex flex-col py-lg z-50 transition-transform duration-300 md:translate-x-0 ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
+        className={`fixed ${isRtl ? "right-0 border-l" : "left-0 border-r"} top-0 h-full w-[280px] bg-white dark:bg-on-background border-border-subtle dark:border-outline-variant flex flex-col py-lg z-50 transition-transform duration-300 md:translate-x-0 ${
+          isOpen ? "translate-x-0" : (isRtl ? "translate-x-full" : "-translate-x-full")
         }`}
       >
         {/* Brand Header */}
@@ -121,8 +122,12 @@ export default function Sidebar({ isOpen, toggleMobileMenu }) {
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4U1n6IBJjrvDnLhTEeJYWpdRf520kwX6mcOykzuHRiRJA-x6wsFV_hKGvfDuyo6jgU5zU15qB1WcHGjaxDeFPRUtlu2SC_KuxD1uSQEMRyNzSoFrzNrIjryBjAmkAI1R5tAJY0Ey3F9pznR0do1Sy-ctpG-v4LlWGjGlP81Jx4JUeppP3HrCuTfua0xHdcSjA2PIqg60YUR4_mHnKMxrpwx-zygaEbZztaBqVxrBR4xlabFizJ8MA"
             />
             <div>
-              <p className="font-label-caps text-label-caps text-on-surface font-semibold text-xs leading-tight">Nurse Davis</p>
-              <p className="font-body-md text-[10px] text-on-surface-variant leading-none mt-1">Shift: 07:00 - 15:00</p>
+              <p className="font-label-caps text-label-caps text-on-surface font-semibold text-xs leading-tight">
+                {isRtl ? "الممرضة ديفيس" : "Nurse Davis"}
+              </p>
+              <p className="font-body-md text-[10px] text-on-surface-variant leading-none mt-1">
+                {isRtl ? "الوردية: 07:00 - 15:00" : "Shift: 07:00 - 15:00"}
+              </p>
             </div>
           </div>
         </div>
