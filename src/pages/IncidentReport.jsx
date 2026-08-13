@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { getIncidents, reportIncident } from "../data/mock-data";
+import { LanguageContext } from "../context/LanguageContext";
+import { useTranslationNew } from "../utils/i18n";
 
 export default function IncidentReport() {
   const [incidents, setIncidents] = useState([]);
@@ -9,6 +11,8 @@ export default function IncidentReport() {
   const [reporter, setReporter] = useState("Nurse Davis");
   const [details, setDetails] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
+  const { language } = useContext(LanguageContext);
+  const t = useTranslationNew(language);
 
   useEffect(() => {
     setIncidents(getIncidents());
@@ -17,7 +21,7 @@ export default function IncidentReport() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!equipmentId || !details) {
-      alert("Please provide the Equipment ID and incident details.");
+      alert(language === "ar" ? "يرجى تقديم معرف المعدة وتفاصيل الحادث." : "Please provide the Equipment ID and incident details.");
       return;
     }
 
@@ -49,77 +53,108 @@ export default function IncidentReport() {
     }
   };
 
+  const translateSeverity = (sev) => {
+    if (language !== "ar") return sev;
+    if (sev === "High") return "عالية";
+    if (sev === "Medium") return "متوسطة";
+    if (sev === "Low") return "منخفضة";
+    return sev;
+  };
+
+  const translateIncidentType = (tType) => {
+    if (language !== "ar") return tType;
+    if (tType === "Air Leak Detected") return "تم اكتشاف تسرب هواء";
+    if (tType === "Conductivity Spike") return "ارتفاع مفاجئ في الموصلية";
+    if (tType === "UF Module Failure") return "فشل وحدة الترشيح الفائق";
+    if (tType === "Vascular Access Infiltration" || tType === "Access Site Incident") return "حادثة موضع الوصول الوعائي";
+    if (tType === "Power Failure / Reset") return "انقطاع التيار الكهربائي / إعادة التشغيل";
+    if (tType === "Other Mechanical Issue") return "مشكلة ميكانيكية أخرى";
+    return tType;
+  };
+
+  const translateReporter = (rep) => {
+    if (language !== "ar") return rep;
+    return rep.replace("Nurse Davis", "الممرضة ديفيس").replace("Tech Ramirez", "الفني راميريز");
+  };
+
+  const translateStatus = (stat) => {
+    if (language !== "ar") return stat;
+    if (stat === "Under Review") return "قيد المراجعة";
+    if (stat === "Resolved") return "تم الحل";
+    return stat;
+  };
+
   return (
-    <div className="max-w-6xl mx-auto pb-12 flex flex-col gap-lg">
+    <div className="max-w-6xl mx-auto pb-12 flex flex-col gap-lg text-start">
       <div className="flex flex-col md:flex-row gap-gutter">
         {/* Left Column: Form */}
         <section className="md:w-1/2">
           {!isSuccess ? (
-            <form onSubmit={handleSubmit} className="bg-white dark:bg-on-background rounded-xl p-6 shadow-soft border border-border-subtle dark:border-outline-variant space-y-md">
-              <h2 className="text-headline-md font-headline-md font-bold text-on-surface dark:text-white border-b border-border-subtle dark:border-outline-variant pb-2 mb-4">
-                File Incident / Damage Report
+            <form onSubmit={handleSubmit} className="bg-white dark:bg-on-background rounded-xl p-6 shadow-soft border border-border-subtle dark:border-outline-variant space-y-md text-start">
+              <h2 className="text-headline-md font-headline-md font-bold text-on-surface dark:text-white border-b border-border-subtle dark:border-outline-variant pb-2 mb-4 text-start">
+                {t("incident.incident.report")}
               </h2>
 
-              <div className="space-y-sm">
-                <label className="block text-sm font-semibold text-on-surface-variant">Equipment / Machine ID *</label>
+              <div className="space-y-sm text-start">
+                <label className="block text-sm font-semibold text-on-surface-variant text-start">{t("forms.equipment.id")} *</label>
                 <input
                   value={equipmentId}
                   onChange={(e) => setEquipmentId(e.target.value)}
-                  placeholder="e.g. Dialysis Machine #12"
-                  className="w-full border border-border-subtle dark:border-outline-variant dark:bg-inverse-surface rounded-lg p-3 text-sm focus:outline-none focus:border-primary text-on-surface dark:text-white"
+                  placeholder={language === "ar" ? "مثال: آلة غسيل الكلى رقم ١٢" : "e.g. Dialysis Machine #12"}
+                  className="w-full border border-border-subtle dark:border-outline-variant dark:bg-inverse-surface rounded-lg p-3 text-sm focus:outline-none focus:border-primary text-on-surface dark:text-white text-start"
                   type="text"
                   required
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-sm">
-                <div className="space-y-sm">
-                  <label className="block text-sm font-semibold text-on-surface-variant">Severity</label>
+              <div className="grid grid-cols-2 gap-sm text-start">
+                <div className="space-y-sm text-start">
+                  <label className="block text-sm font-semibold text-on-surface-variant text-start">{t("forms.severity")}</label>
                   <select
                     value={severity}
                     onChange={(e) => setSeverity(e.target.value)}
-                    className="w-full border border-border-subtle dark:border-outline-variant dark:bg-inverse-surface rounded-lg p-3 text-sm focus:outline-none focus:border-primary text-on-surface dark:text-white"
+                    className="w-full border border-border-subtle dark:border-outline-variant dark:bg-inverse-surface rounded-lg p-3 text-sm focus:outline-none focus:border-primary text-on-surface dark:text-white text-start"
                   >
-                    <option value="Low">Low</option>
-                    <option value="Medium">Medium</option>
-                    <option value="High">High</option>
+                    <option value="Low">{language === "ar" ? "منخفضة" : "Low"}</option>
+                    <option value="Medium">{language === "ar" ? "متوسطة" : "Medium"}</option>
+                    <option value="High">{language === "ar" ? "عالية" : "High"}</option>
                   </select>
                 </div>
-                <div className="space-y-sm">
-                  <label className="block text-sm font-semibold text-on-surface-variant">Incident Type</label>
+                <div className="space-y-sm text-start">
+                  <label className="block text-sm font-semibold text-on-surface-variant text-start">{t("forms.incident.type")}</label>
                   <select
                     value={type}
                     onChange={(e) => setType(e.target.value)}
-                    className="w-full border border-border-subtle dark:border-outline-variant dark:bg-inverse-surface rounded-lg p-3 text-sm focus:outline-none focus:border-primary text-on-surface dark:text-white"
+                    className="w-full border border-border-subtle dark:border-outline-variant dark:bg-inverse-surface rounded-lg p-3 text-sm focus:outline-none focus:border-primary text-on-surface dark:text-white text-start"
                   >
-                    <option value="Air Leak Detected">Air Leak Detected</option>
-                    <option value="Conductivity Spike">Conductivity Spike</option>
-                    <option value="UF Module Failure">UF Module Failure</option>
-                    <option value="Vascular Access Infiltration">Access Site Incident</option>
-                    <option value="Power Failure / Reset">Power Failure / Reset</option>
-                    <option value="Other Mechanical Issue">Other Mechanical Issue</option>
+                    <option value="Air Leak Detected">{language === "ar" ? "تم اكتشاف تسرب هواء" : "Air Leak Detected"}</option>
+                    <option value="Conductivity Spike">{language === "ar" ? "ارتفاع مفاجئ في الموصلية" : "Conductivity Spike"}</option>
+                    <option value="UF Module Failure">{language === "ar" ? "فشل وحدة الترشيح الفائق" : "UF Module Failure"}</option>
+                    <option value="Vascular Access Infiltration">{language === "ar" ? "حادثة موضع الوصول الوعائي" : "Access Site Incident"}</option>
+                    <option value="Power Failure / Reset">{language === "ar" ? "انقطاع التيار الكهربائي / إعادة التشغيل" : "Power Failure / Reset"}</option>
+                    <option value="Other Mechanical Issue">{language === "ar" ? "مشكلة ميكانيكية أخرى" : "Other Mechanical Issue"}</option>
                   </select>
                 </div>
               </div>
 
-              <div className="space-y-sm">
-                <label className="block text-sm font-semibold text-on-surface-variant">Logged By</label>
+              <div className="space-y-sm text-start">
+                <label className="block text-sm font-semibold text-on-surface-variant text-start">{language === "ar" ? "سُجل بواسطة" : "Logged By"}</label>
                 <input
                   value={reporter}
                   onChange={(e) => setReporter(e.target.value)}
-                  className="w-full border border-border-subtle dark:border-outline-variant dark:bg-inverse-surface rounded-lg p-3 text-sm focus:outline-none focus:border-primary text-on-surface dark:text-white"
+                  className="w-full border border-border-subtle dark:border-outline-variant dark:bg-inverse-surface rounded-lg p-3 text-sm focus:outline-none focus:border-primary text-on-surface dark:text-white text-start"
                   type="text"
                 />
               </div>
 
-              <div className="space-y-sm">
-                <label className="block text-sm font-semibold text-on-surface-variant">Incident Details / Description *</label>
+              <div className="space-y-sm text-start">
+                <label className="block text-sm font-semibold text-on-surface-variant text-start">{t("forms.description")} *</label>
                 <textarea
                   value={details}
                   onChange={(e) => setDetails(e.target.value)}
-                  placeholder="Describe what occurred, any alarms triggered, and actions taken..."
+                  placeholder={language === "ar" ? "صف ما حدث، أي إنذارات تم إطلاقها، والإجراءات المتخذة..." : "Describe what occurred, any alarms triggered, and actions taken..."}
                   rows="4"
-                  className="w-full border border-border-subtle dark:border-outline-variant dark:bg-inverse-surface rounded-lg p-3 text-sm focus:outline-none focus:border-primary text-on-surface dark:text-white"
+                  className="w-full border border-border-subtle dark:border-outline-variant dark:bg-inverse-surface rounded-lg p-3 text-sm focus:outline-none focus:border-primary text-on-surface dark:text-white text-start"
                   required
                 />
               </div>
@@ -128,7 +163,7 @@ export default function IncidentReport() {
                 type="submit"
                 className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-surface-tint transition-all active:scale-95 duration-150 text-sm"
               >
-                Submit Report
+                {language === "ar" ? "إرسال التقرير" : "Submit Report"}
               </button>
             </form>
           ) : (
@@ -137,16 +172,16 @@ export default function IncidentReport() {
                 <span className="material-symbols-outlined text-success-medical text-2xl font-bold">check_circle</span>
               </div>
               <h3 className="font-headline-md text-headline-md text-on-surface dark:text-white font-bold mb-sm">
-                Report Submitted Successfully
+                {language === "ar" ? "تم إرسال التقرير بنجاح" : "Report Submitted Successfully"}
               </h3>
               <p className="font-body-md text-sm text-on-surface-variant mb-6">
-                Clinical engineering has been alerted. This incident has been appended to the dashboard logs.
+                {language === "ar" ? "تم تنبيه الهندسة السريرية. تم إرفاق هذا الحادث بسجلات لوحة التحكم." : "Clinical engineering has been alerted. This incident has been appended to the dashboard logs."}
               </p>
               <button
                 onClick={() => setIsSuccess(false)}
                 className="bg-primary-container text-white py-2 px-lg rounded-lg font-semibold text-xs uppercase tracking-wider hover:opacity-90 active:scale-95 duration-150 transition-all"
               >
-                Log New Incident
+                {language === "ar" ? "سجل حادثاً جديداً" : "Log New Incident"}
               </button>
             </div>
           )}
@@ -154,33 +189,33 @@ export default function IncidentReport() {
 
         {/* Right Column: Incident History Logs */}
         <section className="md:w-1/2 flex flex-col">
-          <div className="bg-white dark:bg-on-background rounded-xl p-6 shadow-soft border border-border-subtle dark:border-outline-variant flex-grow">
-            <h2 className="text-headline-md font-headline-md font-bold text-on-surface dark:text-white border-b border-border-subtle dark:border-outline-variant pb-2 mb-4 flex items-center gap-sm">
+          <div className="bg-white dark:bg-on-background rounded-xl p-6 shadow-soft border border-border-subtle dark:border-outline-variant flex-grow text-start">
+            <h2 className="text-headline-md font-headline-md font-bold text-on-surface dark:text-white border-b border-border-subtle dark:border-outline-variant pb-2 mb-4 flex items-center gap-sm text-start">
               <span className="material-symbols-outlined text-outline">assignment</span>
-              Active Incident Logs
+              {language === "ar" ? "سجلات الحوادث النشطة" : "Active Incident Logs"}
             </h2>
-            <div className="space-y-md max-h-[500px] overflow-y-auto pr-1">
+            <div className="space-y-md max-h-[500px] overflow-y-auto pr-1 text-start">
               {incidents.map((inc) => (
-                <div key={inc.id} className="border border-border-subtle dark:border-outline-variant rounded-lg p-md space-y-sm hover:bg-surface-muted/50 transition-colors">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h4 className="font-bold text-on-surface dark:text-white text-sm">
-                        {inc.equipmentId} - <span className="text-on-surface-variant font-normal">{inc.type}</span>
+                <div key={inc.id} className="border border-border-subtle dark:border-outline-variant rounded-lg p-md space-y-sm hover:bg-surface-muted/50 transition-colors text-start">
+                  <div className="flex justify-between items-start text-start">
+                    <div className="text-start">
+                      <h4 className="font-bold text-on-surface dark:text-white text-sm text-start">
+                        {inc.equipmentId} - <span className="text-on-surface-variant font-normal text-start">{translateIncidentType(inc.type)}</span>
                       </h4>
-                      <p className="text-[10px] text-on-surface-variant mt-0.5">
-                        Log ID: {inc.id} • {inc.date} • Reporter: {inc.reporter}
+                      <p className="text-[10px] text-on-surface-variant mt-0.5 text-start">
+                        {language === "ar" ? "معرف السجل" : "Log ID"}: {inc.id} • {inc.date} • {language === "ar" ? "المبلغ" : "Reporter"}: {translateReporter(inc.reporter)}
                       </p>
                     </div>
                     <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${getSeverityBadge(inc.severity)}`}>
-                      {inc.severity} Severity
+                      {translateSeverity(inc.severity)} {language === "ar" ? "شدة" : "Severity"}
                     </span>
                   </div>
-                  <p className="text-xs text-on-surface-variant bg-surface-muted dark:bg-surface-container-highest p-sm rounded italic">
+                  <p className="text-xs text-on-surface-variant bg-surface-muted dark:bg-surface-container-highest p-sm rounded italic text-start">
                     "{inc.details}"
                   </p>
-                  <div className="flex items-center gap-sm text-[10px] text-on-surface-variant font-semibold">
+                  <div className="flex items-center gap-sm text-[10px] text-on-surface-variant font-semibold text-start">
                     <span className="w-2 h-2 rounded-full bg-[#EAB308]"></span>
-                    <span>Status: {inc.status || "Under Review"}</span>
+                    <span>{language === "ar" ? "الحالة" : "Status"}: {translateStatus(inc.status || "Under Review")}</span>
                   </div>
                 </div>
               ))}

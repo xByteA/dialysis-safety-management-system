@@ -92,7 +92,7 @@ export default function NurseDashboard() {
                 }`}
               >
                 {/* Left indicators */}
-                <div className={`absolute left-0 top-0 bottom-0 w-1 ${
+                <div className={`absolute ${language === "ar" ? "right-0" : "left-0"} top-0 bottom-0 w-1 ${
                   session.status === "Attn Req" 
                     ? "bg-critical-alert" 
                     : session.status === "In Progress" 
@@ -107,7 +107,7 @@ export default function NurseDashboard() {
                   <div>
                     <button 
                       onClick={() => navigate("/patient-profile-overview")}
-                      className="font-headline-md text-body-lg text-on-surface dark:text-white hover:text-primary hover:underline transition-all text-left font-semibold"
+                      className={`font-headline-md text-body-lg text-on-surface dark:text-white hover:text-primary hover:underline transition-all ${language === "ar" ? "text-right" : "text-left"} font-semibold`}
                     >
                       {session.patientName}
                     </button>
@@ -115,7 +115,7 @@ export default function NurseDashboard() {
                       <span className="material-symbols-outlined text-[14px]">schedule</span>
                       <span>{session.time}</span>
                       <span className="mx-1">•</span>
-                      <span className="font-semibold">{session.bed}</span>
+                      <span className="font-semibold">{t(session.bed)}</span>
                     </div>
                   </div>
                 </div>
@@ -131,12 +131,12 @@ export default function NurseDashboard() {
                       }`}
                     >
                       <span className="material-symbols-outlined text-[14px]">warning</span>
-                      {session.medicationAlert}
+                      {t(session.medicationAlert)}
                     </button>
                   )}
 
                   <span className={`px-2 py-1 rounded-full font-status-badge text-status-badge border text-[10px] ${getStatusBadgeClass(session.statusType)}`}>
-                    {session.status}
+                    {t(session.status)}
                   </span>
 
                   <button 
